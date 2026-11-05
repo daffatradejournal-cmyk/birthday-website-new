@@ -32,34 +32,34 @@ export default function AudioController({
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Build the complete playlist from config
+  // Complete playlist
   const playlist: PlayableTrack[] = [
     {
       id: "bgm-main",
       title: "Warm Acoustic Memories",
-      artist: "Birthday Main Theme",
+      artist: "Lagu Tema Utama",
       src: birthdayData.bgmMain || birthdayData.audioTracks.main,
-      tag: "BGM 01 • Main Theme",
+      tag: "Musik Pembuka",
     },
     ...birthdayData.jukeboxTracks.map((jt) => ({
       id: `song-${jt.id}`,
       title: jt.title,
       artist: jt.artist,
       src: jt.audioSrc,
-      tag: `Jukebox #${jt.id} • ${jt.artist}`,
+      tag: `Pilihan: ${jt.artist}`,
     })),
     {
       id: "bgm-ending",
-      title: "Birthday Waltz & Wishes",
-      artist: "Finale Celebration",
+      title: "Birthday Waltz & Celebration",
+      artist: "Lagu Pesta Perayaan",
       src: birthdayData.bgmEnding || birthdayData.audioTracks.ending,
-      tag: "BGM 02 • Grand Finale",
+      tag: "Musik Puncak",
     },
   ];
 
   const currentTrack = playlist[activeTrackIndex] || playlist[0];
 
-  // Safe play helper
+  // Helper to safely play audio
   const triggerPlay = useCallback(async () => {
     setIsPlaying(true);
     if (useSynthFallback) {
@@ -70,6 +70,7 @@ export default function AudioController({
     if (audioRef.current) {
       try {
         await audioRef.current.play();
+        setUseSynthFallback(false);
       } catch {
         setUseSynthFallback(true);
         soundEngine.startBackgroundMusic(activeTrackIndex === playlist.length - 1 ? "ending" : "main");
@@ -131,16 +132,6 @@ export default function AudioController({
     selectTrackByIndex(nextIdx);
   };
 
-  // Switch to ending track when Phase 4 is reached
-  useEffect(() => {
-    if (currentPhase === 4) {
-      const endingIndex = playlist.length - 1;
-      if (activeTrackIndex !== endingIndex) {
-        selectTrackByIndex(endingIndex);
-      }
-    }
-  }, [currentPhase, playlist.length, selectTrackByIndex, activeTrackIndex]);
-
   // Handle auto-start upon unlocking Phase 0
   useEffect(() => {
     if (autoStartOnPhase0Unlock && currentPhase >= 1 && !isPlaying) {
@@ -148,8 +139,9 @@ export default function AudioController({
     }
   }, [currentPhase, autoStartOnPhase0Unlock, isPlaying, triggerPlay]);
 
-  // Listen for global custom events to change track (e.g. from Phase 2 Jukebox)
+  // Global events listener
   useEffect(() => {
+    // 1. Play custom track (e.g. from Jukebox in Phase 2)
     const handleCustomPlay = (e: Event) => {
       const customEvent = e as CustomEvent<{ audioSrc: string }>;
       if (customEvent.detail && customEvent.detail.audioSrc) {
@@ -160,9 +152,29 @@ export default function AudioController({
       }
     };
 
+    // 2. Ensure music is playing (e.g. when tapping stars in Phase 3)
+    const handleEnsurePlaying = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(() => {});
+      }
+    };
+
+    // 3. Play finale celebration music (when candle is blown in Phase 4)
+    const handlePlayFinale = () => {
+      const endingIndex = playlist.length - 1;
+      selectTrackByIndex(endingIndex);
+    };
+
     window.addEventListener("play-custom-track", handleCustomPlay as EventListener);
+    window.addEventListener("ensure-music-playing", handleEnsurePlaying);
+    window.addEventListener("play-finale-music", handlePlayFinale);
+
     return () => {
       window.removeEventListener("play-custom-track", handleCustomPlay as EventListener);
+      window.removeEventListener("ensure-music-playing", handleEnsurePlaying);
+      window.removeEventListener("play-finale-music", handlePlayFinale);
     };
   }, [playlist, selectTrackByIndex]);
 
@@ -178,8 +190,9 @@ export default function AudioController({
     };
 
     const handleEnded = () => {
-      // Advance to next track or loop
-      nextTrack();
+      // Loop the current track so music NEVER stops!
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
     };
 
     const handleError = () => {
@@ -206,11 +219,12 @@ export default function AudioController({
 
   return (
     <>
-      {/* Hidden HTML5 Audio Element */}
+      {/* Hidden HTML5 Audio Element with continuous loop */}
       <audio
         ref={audioRef}
         src={currentTrack.src}
         preload="auto"
+        loop
         playsInline
       />
 
@@ -228,7 +242,7 @@ export default function AudioController({
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div>
                   <span className="text-[10px] uppercase font-bold tracking-wider text-dusty-rose block">
-                    Now Playing
+                    Sedang Diputar
                   </span>
                   <h4 className="text-xs font-serif font-bold text-espresso leading-snug">
                     {currentTrack.title}
@@ -250,10 +264,10 @@ export default function AudioController({
                 />
               </div>
 
-              {/* Playlist items */}
+              {/* Playlist items without # tags */}
               <div className="space-y-1 mb-3 pt-1 border-t border-taupe/10">
                 <span className="text-[9px] uppercase tracking-wider text-taupe/70 font-semibold block px-1">
-                  Pilih Lagu ({playlist.length} Lagu)
+                  Daftar Lagu ({playlist.length} Pilihan)
                 </span>
                 {playlist.map((item, idx) => (
                   <button

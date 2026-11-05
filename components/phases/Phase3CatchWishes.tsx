@@ -35,6 +35,13 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
   const starColors = ["#D8A796", "#9CAF9E", "#F3E5AB", "#C87D65", "#BA8675"];
   const starTypes: ("star" | "heart" | "sparkle")[] = ["star", "heart", "sparkle"];
 
+  // Ensure music stays alive right upon mounting Phase 3
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("ensure-music-playing"));
+    }
+  }, []);
+
   // Spawn a new falling star
   const spawnStar = (): FallingStar => {
     starIdCounter.current += 1;
@@ -42,7 +49,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
       id: starIdCounter.current,
       xPercent: 8 + Math.random() * 84,
       yPercent: -10 - Math.random() * 15,
-      speed: 0.25 + Math.random() * 0.28, // gentle, peaceful drift
+      speed: 0.25 + Math.random() * 0.28, // gentle drift
       size: 28 + Math.random() * 16,
       rotation: Math.random() * 360,
       type: starTypes[Math.floor(Math.random() * starTypes.length)],
@@ -55,7 +62,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
     const initialStars: FallingStar[] = [];
     for (let i = 0; i < 6; i++) {
       const s = spawnStar();
-      s.yPercent = Math.random() * 70; // spread vertically at start
+      s.yPercent = Math.random() * 70;
       initialStars.push(s);
     }
     setStars(initialStars);
@@ -73,7 +80,6 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
         prev.map((star) => {
           const nextY = star.yPercent + star.speed * delta;
           if (nextY > 105) {
-            // Respawn at top
             return spawnStar();
           }
           return {
@@ -96,6 +102,11 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
   // Catch star action (click/tap)
   const handleCatchStar = (starId: number) => {
     if (caughtCount >= TARGET_STARS) return;
+
+    // Wake up & keep background music alive continuously!
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("ensure-music-playing"));
+    }
 
     soundEngine.playSparkleSound();
     const nextCaught = caughtCount + 1;
@@ -121,14 +132,14 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
 
   return (
     <div className="w-full max-w-3xl mx-auto px-4 py-6 sm:py-8">
-      {/* Header */}
+      {/* Header without # tag */}
       <div className="text-center mb-6">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 text-espresso text-xs font-serif italic mb-2">
           <Flame className="w-3.5 h-3.5 text-dusty-rose" />
-          Quest Bahan #3: Catch the Falling Wishes
+          Catch the Falling Wishes
         </span>
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
-          Tangkap 5 Bintang Harapan
+          Tangkap Bintang Harapan
         </h2>
         <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
           Sentuh bintang atau hati yang melayang pelan untuk mengungkap alasan kenapa aku mencintaimu.
@@ -211,7 +222,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
         ))}
       </div>
 
-      {/* Quest Reward #3 Modal */}
+      {/* Reward Modal without # tags */}
       <AnimatePresence>
         {isCompleted && (
           <motion.div
@@ -226,11 +237,11 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
               </div>
 
               <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Item 3 Berhasil Dikumpulkan!
+                Semua Bahan Kue Telah Lengkap!
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Lilin Ulang Tahun Didapatkan! 🕯️
+                Lilin Harapan Terkumpul! 🕯️
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
@@ -243,11 +254,14 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
                   type="button"
                   onClick={() => {
                     soundEngine.playSuccessChime();
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("ensure-music-playing"));
+                    }
                     onComplete();
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
                 >
-                  <span>Menuju Puncak Perayaan (Grand Finale)</span>
+                  <span>Nyalakan & Rayakan Ulang Tahunmu</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

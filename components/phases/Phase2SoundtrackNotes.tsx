@@ -11,7 +11,7 @@ interface Phase2SoundtrackNotesProps {
 }
 
 export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNotesProps) {
-  // Part A: Jukebox & Scrambled Phrase Quiz State
+  // Jukebox & Scrambled Phrase Quiz State
   const jukeboxTracks = birthdayData.jukeboxTracks;
   const [selectedTrack, setSelectedTrack] = useState<JukeboxTrack>(jukeboxTracks[0]);
   const [isPlayingVinyl, setIsPlayingVinyl] = useState(false);
@@ -22,7 +22,8 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
   const [isQuizSolved, setIsQuizSolved] = useState(false);
   const [quizError, setQuizError] = useState(false);
 
-  // Part B: Soft Notes Envelopes State
+  // Soft Notes Envelopes State
+  const totalNotes = birthdayData.softNotes.length;
   const [openedNoteIds, setOpenedNoteIds] = useState<number[]>([]);
   const [activeReadingNote, setActiveReadingNote] = useState<SoftNoteItem | null>(null);
   const [isRewardUnlocked, setIsRewardUnlocked] = useState(false);
@@ -82,44 +83,44 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
       const nextOpened = [...openedNoteIds, note.id];
       setOpenedNoteIds(nextOpened);
 
-      // Condition: User must open at least 3 envelopes
-      if (nextOpened.length >= 3 && !isRewardUnlocked) {
+      // STRICT CONDITION: User MUST open ALL 4 envelopes to proceed!
+      if (nextOpened.length >= totalNotes && !isRewardUnlocked) {
         setTimeout(() => {
           soundEngine.playSuccessChime();
           setIsRewardUnlocked(true);
-        }, 600);
+        }, 800);
       }
     }
   };
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 py-6 sm:py-8">
-      {/* Title Header */}
+      {/* Title Header without # tag */}
       <div className="text-center mb-8">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dusty-rose/20 text-dusty-rose-dark text-xs font-serif italic mb-2">
           <Sparkles className="w-3.5 h-3.5" />
-          Quest Bahan #2: The Soundtrack & Soft Notes
+          The Soundtrack & Soft Notes
         </span>
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
           Melodi Cinta & Surat Kecil
         </h2>
         <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
-          Pilih piringan hitam lagu kita, susun bait liriknya, lalu buka 4 amplop rahasia.
+          Pilih piringan hitam lagu kita, susun bait liriknya, lalu buka seluruh amplop surat cinta.
         </p>
       </div>
 
-      {/* PART A: The Vinyl Jukebox Player & Lyric Scramble */}
+      {/* The Vinyl Jukebox Player & Lyric Scramble */}
       <motion.section
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         className="bg-warmcard/90 backdrop-blur-sm border border-taupe/15 rounded-3xl p-5 sm:p-7 shadow-soft mb-8 max-w-3xl mx-auto"
       >
-        {/* Top: 4 Jukebox Vinyl Selector Tabs */}
+        {/* Jukebox Vinyl Selector Tabs without # tags */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-3">
             <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-dusty-rose flex items-center gap-1.5">
               <Disc3 className="w-3.5 h-3.5" />
-              Vinyl Jukebox • 4 Lagu Pilihan
+              Vinyl Jukebox • Lagu Pilihan Kita
             </span>
             <span className="text-[11px] text-taupe font-serif italic">
               Klik piringan untuk memutar
@@ -170,7 +171,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
           </div>
         </div>
 
-        {/* Middle: Active Spinning Vinyl Turntable UI */}
+        {/* Active Spinning Vinyl Turntable UI */}
         <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 pt-4 border-t border-taupe/10">
           <div className="relative flex-shrink-0">
             <div
@@ -180,7 +181,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
             >
               {/* Vinyl Grooves */}
               <div className="w-20 h-20 rounded-full border border-taupe/30 flex items-center justify-center">
-                {/* Center label with album cover art (standard img tag) */}
+                {/* Center label with album cover art */}
                 <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-warmcard shadow-inner relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -208,7 +209,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
           {/* Active Track Info & Play Button */}
           <div className="flex-1 text-center sm:text-left">
             <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-dusty-rose block">
-              Now On Turntable
+              Sedang Diputar
             </span>
             <h3 className="text-lg sm:text-xl font-serif font-bold text-espresso">
               {selectedTrack.artist} — {selectedTrack.title}
@@ -304,32 +305,37 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               className="mt-3 text-center text-xs font-serif font-medium text-sage-dark bg-sage/15 py-1.5 px-4 rounded-full inline-flex items-center gap-1.5 mx-auto w-full justify-center"
             >
               <CheckCircle className="w-4 h-4 text-sage-dark" />
-              <span>Bait lirik terpecahkan! 4 Amplop Rahasia telah terbuka.</span>
+              <span>Bait lirik terpecahkan! Seluruh amplop rahasia telah terbuka.</span>
             </motion.div>
           )}
         </div>
       </motion.section>
 
-      {/* PART B: The Soft Notes Grid */}
+      {/* The Soft Notes Grid (MUST OPEN ALL ENVELOPES) */}
       <div className="mt-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 mb-4">
           <div>
             <h3 className="text-lg sm:text-xl font-serif font-bold text-espresso text-center sm:text-left">
-              Part B: Amplop Isi Hati (Buka Minimal 3)
+              Amplop Surat Cinta (Buka Semua Amplop)
             </h3>
             <p className="text-xs text-taupe text-center sm:text-left">
-              Catatan kecil untuk menemani hari-harimu.
+              Buka dan baca semua 4 amplop untuk melanjutkan ke tahap berikutnya.
             </p>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-oat border border-taupe/15 text-xs text-espresso font-medium">
+          <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium ${
+            openedNoteIds.length === totalNotes
+              ? "bg-sage/20 border-sage/40 text-sage-dark"
+              : "bg-oat border-taupe/15 text-espresso"
+          }`}>
             <BookOpen className="w-3.5 h-3.5 text-dusty-rose" />
             <span>
-              Dibuka: <strong>{openedNoteIds.length}</strong> / 4 (Target: 3)
+              Dibuka: <strong>{openedNoteIds.length}</strong> / {totalNotes}{" "}
+              {openedNoteIds.length === totalNotes ? "(Lengkap!)" : "(Harus buka semua)"}
             </span>
           </div>
         </div>
 
-        {/* 4 Envelope Cards */}
+        {/* 4 Envelope Cards without # tags */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {birthdayData.softNotes.map((note) => {
             const isOpened = openedNoteIds.includes(note.id);
@@ -364,7 +370,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                     </div>
                     <div>
                       <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-taupe block">
-                        Amplop #{note.id}
+                        Surat Untukmu
                       </span>
                       <h4 className="text-sm sm:text-base font-serif font-bold text-espresso leading-snug">
                         {note.title}
@@ -374,7 +380,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
 
                   {isOpened ? (
                     <span className="text-[11px] font-sans font-medium text-sage-dark bg-sage/20 px-2 py-0.5 rounded-full">
-                      Dibaca
+                      Sudah Dibaca
                     </span>
                   ) : (
                     <Mail className="w-4 h-4 text-dusty-rose" />
@@ -427,7 +433,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Envelope Header */}
+              {/* Envelope Header without # tag */}
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-lg shadow-sm"
@@ -437,7 +443,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-dusty-rose block">
-                    Surat Cinta #{activeReadingNote.id}
+                    Surat Cinta Dari Hatiku
                   </span>
                   <h3 className="text-lg font-serif font-bold text-espresso">
                     {activeReadingNote.title}
@@ -446,7 +452,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               </div>
 
               {/* Textured Letter Body */}
-              <div className="p-5 rounded-2xl bg-oat/50 border border-taupe/15 text-espresso font-serif text-sm sm:text-base leading-relaxed whitespace-pre-line shadow-inner">
+              <div className="p-5 rounded-2xl bg-oat/50 border border-taupe/15 text-espresso font-serif text-sm sm:text-base leading-relaxed whitespace-pre-line shadow-inner max-h-[50vh] overflow-y-auto">
                 {activeReadingNote.content}
               </div>
 
@@ -468,7 +474,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
         )}
       </AnimatePresence>
 
-      {/* Quest Reward #2 Modal */}
+      {/* Reward Modal upon OPENING ALL 4 ENVELOPES */}
       <AnimatePresence>
         {isRewardUnlocked && (
           <motion.div
@@ -483,11 +489,11 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               </div>
 
               <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Item 2 Berhasil Dikumpulkan!
+                Semua Surat Telah Dibaca!
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Krim & Topping Manis Didapatkan! 🍓
+                Krim & Topping Manis Terkumpul! 🍓
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
@@ -504,7 +510,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
                 >
-                  <span>Lanjut ke Quest #3: Tangkap Bintang Harapan</span>
+                  <span>Lanjut ke Bintang Harapan</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

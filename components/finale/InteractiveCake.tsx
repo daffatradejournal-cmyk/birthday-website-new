@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Flame, Mic, MicOff, Wind, Sparkles, RotateCcw } from "lucide-react";
+import { Mic, MicOff, Wind, RotateCcw } from "lucide-react";
 import confetti from "canvas-confetti";
 import { soundEngine } from "@/lib/soundSynth";
 
@@ -30,23 +30,30 @@ export default function InteractiveCake({
     setIsLit(!isBlown);
   }, [isBlown]);
 
+  // Make sure music is playing when cake mounts
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("ensure-music-playing"));
+    }
+  }, []);
+
   // Trigger Confetti in Warm Pastel Colors
   const firePastelConfetti = () => {
-    const end = Date.now() + 3 * 1000;
+    const end = Date.now() + 3.5 * 1000;
     const colors = ["#D8A796", "#9CAF9E", "#F3E5AB", "#F2DCD4", "#C87D65", "#FFFFFF"];
 
     (function frame() {
       confetti({
-        particleCount: 4,
+        particleCount: 5,
         angle: 60,
-        spread: 55,
+        spread: 60,
         origin: { x: 0 },
         colors,
       });
       confetti({
-        particleCount: 4,
+        particleCount: 5,
         angle: 120,
-        spread: 55,
+        spread: 60,
         origin: { x: 1 },
         colors,
       });
@@ -57,13 +64,19 @@ export default function InteractiveCake({
     })();
   };
 
-  // Blow out candle execution
+  // Blow out candle execution - GUARANTEES MUSIC PLAYS AND NEVER DIES!
   const executeBlow = () => {
     if (!isLit) return;
     soundEngine.playCandleBlowSound();
     setIsLit(false);
     stopMicListening();
     firePastelConfetti();
+
+    // CRITICAL: Immediately switch to and play the Grand Finale Celebration Music!
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("play-finale-music"));
+    }
+
     setTimeout(() => {
       soundEngine.playSuccessChime();
       onCandleBlown();
@@ -74,6 +87,9 @@ export default function InteractiveCake({
   const handleRelight = () => {
     soundEngine.playSparkleSound();
     setIsLit(true);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("ensure-music-playing"));
+    }
     if (onRelight) onRelight();
   };
 
@@ -122,7 +138,7 @@ export default function InteractiveCake({
       };
 
       animationFrameRef.current = requestAnimationFrame(checkVolume);
-    } catch (err: any) {
+    } catch {
       setMicError("Mikrofon tidak dapat diakses atau izin ditolak. Kamu tetap bisa klik tombol di bawah!");
       setIsMicListening(false);
     }
@@ -165,7 +181,7 @@ export default function InteractiveCake({
           <path d="M125 285 L135 305 L165 305 L175 285 Z" fill="#E2DAD2" />
           <ellipse cx="150" cy="305" rx="30" ry="6" fill="#D3C9BF" />
 
-          {/* LAYER 1: BASE CAKE (Sponge Cake) */}
+          {/* BASE CAKE LAYER (Sponge Cake) */}
           <rect x="50" y="200" width="200" height="75" rx="14" fill="#E8D1BA" />
           <ellipse cx="150" cy="200" rx="100" ry="16" fill="#F0DCB8" />
 
@@ -176,7 +192,7 @@ export default function InteractiveCake({
             opacity="0.85"
           />
 
-          {/* LAYER 2: TOP TIER (Sweet Cream & Berries) */}
+          {/* TOP TIER LAYER (Sweet Cream & Berries) */}
           <rect x="80" y="140" width="140" height="65" rx="12" fill="#FAF5EE" stroke="#EFE6DA" strokeWidth="1.5" />
           <ellipse cx="150" cy="140" rx="70" ry="14" fill="#FFFBF5" />
 
@@ -187,42 +203,33 @@ export default function InteractiveCake({
           />
 
           {/* Strawberries & Berries Topping */}
-          {/* Strawberry 1 */}
           <path d="M125 130 C120 120, 130 114, 135 125 C140 132, 130 138, 125 130 Z" fill="#D36B64" />
           <circle cx="127" cy="126" r="1" fill="#FFF" />
           <circle cx="132" cy="128" r="1" fill="#FFF" />
           <path d="M128 118 L130 114 L133 118 Z" fill="#9CAF9E" />
 
-          {/* Strawberry 2 */}
           <path d="M165 130 C160 120, 170 114, 175 125 C180 132, 170 138, 165 130 Z" fill="#D36B64" />
           <circle cx="167" cy="126" r="1" fill="#FFF" />
           <circle cx="172" cy="128" r="1" fill="#FFF" />
           <path d="M168 118 L170 114 L173 118 Z" fill="#9CAF9E" />
 
-          {/* Blueberries */}
           <circle cx="108" cy="138" r="5" fill="#6B728E" />
           <circle cx="192" cy="138" r="5" fill="#6B728E" />
           <circle cx="150" cy="144" r="4.5" fill="#6B728E" />
 
-          {/* LAYER 3: BIRTHDAY CANDLE */}
-          {/* Candle Body */}
+          {/* BIRTHDAY CANDLE */}
           <rect x="144" y="80" width="12" height="48" rx="4" fill="#FDF8E8" stroke="#EADCB0" strokeWidth="1" />
-          {/* Candle Stripes */}
           <path d="M144 92 L156 86 M144 104 L156 98 M144 116 L156 110" stroke="#D8A796" strokeWidth="2.5" strokeLinecap="round" />
-          {/* Wick */}
           <line x1="150" y1="80" x2="150" y2="70" stroke="#423835" strokeWidth="2" strokeLinecap="round" />
 
-          {/* FLAME & GLOW (Interactive & Animated) */}
+          {/* FLAME & GLOW */}
           {isLit && (
             <g className="animate-flicker origin-bottom" style={{ transformOrigin: "150px 70px" }}>
-              {/* Outer Warm Glow */}
               <circle cx="150" cy="58" r="26" fill="#F3E5AB" opacity="0.35" />
-              {/* Mid Orange Flame */}
               <path
                 d="M150 40 C143 52, 142 62, 150 70 C158 62, 157 52, 150 40 Z"
                 fill="#F39C12"
               />
-              {/* Inner Bright Yellow Core */}
               <path
                 d="M150 47 C146 54, 145 61, 150 67 C155 61, 154 54, 150 47 Z"
                 fill="#FFF9D2"

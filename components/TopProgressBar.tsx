@@ -57,10 +57,10 @@ export default function TopProgressBar({
             </span>
             <div className="text-left">
               <span className="text-[11px] uppercase tracking-widest text-taupe block font-medium">
-                Birthday Cake Quest
+                Perjalanan Hari Spesial
               </span>
               <p className="text-xs sm:text-sm font-serif font-semibold text-espresso">
-                Langkah {Math.min(currentPhase, 4)} dari 4:{" "}
+                Sedang Membuka:{" "}
                 <span className="text-dusty-rose font-medium">
                   {MILESTONES[Math.min(currentPhase - 1, 3)].title}
                 </span>
@@ -69,7 +69,7 @@ export default function TopProgressBar({
           </div>
 
           {/* Stepper pills */}
-          <nav aria-label="Quest Progress" className="flex items-center gap-1.5 sm:gap-2">
+          <nav aria-label="Progress" className="flex items-center gap-1.5 sm:gap-2">
             {MILESTONES.map((milestone, idx) => {
               const isCompleted = milestone.phase < currentPhase;
               const isCurrent = milestone.phase === currentPhase;

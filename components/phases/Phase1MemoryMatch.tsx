@@ -123,7 +123,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
       <div className="text-center mb-6 sm:mb-8">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 border border-butter-light text-espresso text-xs font-serif italic mb-2">
           <Cake className="w-3.5 h-3.5 text-dusty-rose" />
-          Quest Bahan #1: Memory Polaroid Match
+          Kenangan Manis Kita
         </span>
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
           Temukan Pasangan Kenangan
@@ -193,13 +193,13 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.45, ease: "easeInOut" }}
               >
-                {/* Back of the card (Editorial Scrapbook Paper Pattern) */}
+                {/* Back of the card (Editorial Scrapbook Paper Pattern) without # tag */}
                 <div className="absolute inset-0 w-full h-full rounded-xl bg-warmcard border-2 border-taupe/15 flex flex-col items-center justify-center p-3 text-center [backface-visibility:hidden] hover:border-dusty-rose/50 transition-colors">
                   <div className="w-12 h-12 rounded-full bg-oat flex items-center justify-center border border-taupe/20 mb-2">
                     <span className="font-serif text-lg text-dusty-rose">✦</span>
                   </div>
                   <span className="text-[10px] uppercase font-sans tracking-widest text-taupe/70 font-semibold">
-                    Memory #{idx + 1}
+                    Kenangan Kita
                   </span>
                   <div className="absolute bottom-2 text-[9px] text-taupe/50 italic font-serif">
                     Sentuh untuk buka
@@ -237,7 +237,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
         })}
       </div>
 
-      {/* Quest Reward Modal / Banner upon completion */}
+      {/* Completion Modal / Banner */}
       <AnimatePresence>
         {isWon && (
           <motion.div
@@ -254,11 +254,11 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
               </div>
 
               <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Item 1 Berhasil Dikumpulkan!
+                Pondasi Pertama Lengkap!
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Base Kue Ulang Tahun Didapatkan! 🎂
+                Base Kue Ulang Tahun Terkumpul! 🎂
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
@@ -275,7 +275,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
                 >
-                  <span>Lanjut ke Quest #2: Jukebox & Notes</span>
+                  <span>Lanjut ke Melodi & Amplop Surat</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
