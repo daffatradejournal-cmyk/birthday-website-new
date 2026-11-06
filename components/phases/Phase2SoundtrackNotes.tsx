@@ -27,6 +27,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
   const [openedNoteIds, setOpenedNoteIds] = useState<number[]>([]);
   const [activeReadingNote, setActiveReadingNote] = useState<SoftNoteItem | null>(null);
   const [isRewardUnlocked, setIsRewardUnlocked] = useState(false);
+  const [hasShownReward, setHasShownReward] = useState(false);
 
   // Play a jukebox track
   const handleSelectTrack = (track: JukeboxTrack) => {
@@ -74,22 +75,35 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
     setQuizError(false);
   };
 
-  // Handle opening an envelope
+  // Handle opening an envelope (DO NOT interrupt reading with reward popup!)
   const handleOpenEnvelope = (note: SoftNoteItem) => {
     soundEngine.playClickSound();
     setActiveReadingNote(note);
 
     if (!openedNoteIds.includes(note.id)) {
-      const nextOpened = [...openedNoteIds, note.id];
-      setOpenedNoteIds(nextOpened);
+      setOpenedNoteIds((prev) => (prev.includes(note.id) ? prev : [...prev, note.id]));
+    }
+  };
 
-      // STRICT CONDITION: User MUST open ALL 4 envelopes to proceed!
-      if (nextOpened.length >= totalNotes && !isRewardUnlocked) {
-        setTimeout(() => {
-          soundEngine.playSuccessChime();
-          setIsRewardUnlocked(true);
-        }, 800);
-      }
+  // Handle closing an envelope AFTER user finishes reading
+  const handleCloseReadingNote = () => {
+    soundEngine.playClickSound();
+    const currentNoteId = activeReadingNote?.id;
+    setActiveReadingNote(null);
+
+    const isAllRead =
+      openedNoteIds.length >= totalNotes ||
+      (currentNoteId !== undefined &&
+        !openedNoteIds.includes(currentNoteId) &&
+        openedNoteIds.length + 1 >= totalNotes);
+
+    // Only show reward modal after user closes the reading view!
+    if (isAllRead && !hasShownReward) {
+      setTimeout(() => {
+        soundEngine.playSuccessChime();
+        setIsRewardUnlocked(true);
+        setHasShownReward(true);
+      }, 400);
     }
   };
 
@@ -407,6 +421,35 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
             );
           })}
         </div>
+
+        {/* Persistent Action Banner when all 4 envelopes are read */}
+        {openedNoteIds.length >= totalNotes && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 p-4 sm:p-5 rounded-2xl bg-oat/70 border border-dusty-rose/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left"
+          >
+            <div>
+              <p className="text-xs sm:text-sm font-serif font-bold text-espresso">
+                Semua amplop sudah kamu baca! ✨
+              </p>
+              <p className="text-[11px] text-taupe mt-0.5">
+                Krim manis dan topping kuenya sudah lengkap. Yuk lanjut pasang lilinnya!
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playSuccessChime();
+                onComplete();
+              }}
+              className="px-5 py-2.5 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs font-serif font-semibold tracking-wide inline-flex items-center gap-2 shadow-soft hover:shadow-floating transition-all shrink-0 cursor-pointer"
+            >
+              <span>Lanjut Pasang Lilin ↗</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </motion.div>
+        )}
       </div>
 
       {/* Note Reader Modal */}
@@ -416,21 +459,20 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={handleCloseReadingNote}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso/40 backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
               className="bg-warmcard border border-dusty-rose/40 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-floating relative"
             >
               {/* Close Button */}
               <button
                 type="button"
-                onClick={() => {
-                  soundEngine.playClickSound();
-                  setActiveReadingNote(null);
-                }}
+                onClick={handleCloseReadingNote}
                 className="absolute top-4 right-4 p-2 rounded-full hover:bg-oat text-taupe hover:text-espresso transition-colors"
                 aria-label="Tutup surat"
               >
@@ -464,10 +506,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                 <span>Ditulis tulus dari hatiku buat kamu ♡</span>
                 <button
                   type="button"
-                  onClick={() => {
-                    soundEngine.playClickSound();
-                    setActiveReadingNote(null);
-                  }}
+                  onClick={handleCloseReadingNote}
                   className="px-4 py-2 rounded-full bg-espresso text-warmcard text-xs font-serif font-semibold tracking-wide hover:bg-espresso-light transition-colors"
                 >
                   Tutup Surat
@@ -478,7 +517,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
         )}
       </AnimatePresence>
 
-      {/* Reward Modal upon OPENING ALL 4 ENVELOPES */}
+      {/* Reward Modal upon OPENING ALL 4 ENVELOPES (Triggered ONLY after closing reading view) */}
       <AnimatePresence>
         {isRewardUnlocked && (
           <motion.div
@@ -508,11 +547,18 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button
                   type="button"
+                  onClick={() => setIsRewardUnlocked(false)}
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-oat hover:bg-oat-hover border border-taupe/20 text-xs font-serif font-semibold text-taupe hover:text-espresso transition-colors cursor-pointer"
+                >
+                  Baca Ulang Surat
+                </button>
+                <button
+                  type="button"
                   onClick={() => {
                     soundEngine.playSuccessChime();
                     onComplete();
                   }}
-                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all cursor-pointer"
                 >
                   <span>Lanjut Pasang Lilin ↗</span>
                   <ArrowRight className="w-4 h-4" />
