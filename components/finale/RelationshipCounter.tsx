@@ -46,7 +46,7 @@ export default function RelationshipCounter() {
       </h4>
 
       <p className="text-xs text-taupe mt-1 max-w-sm mx-auto">
-        Dihitung dari hari pertama kita bareng, dan setiap detiknya selalu berarti banget buat aku ♡
+        Dihitung dari tanggal 23 Juni 2023, dan setiap detiknya selalu berarti banget buat aku ♡
       </p>
 
       {/* Grid of 4 Time Units */}

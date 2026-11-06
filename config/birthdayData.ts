@@ -135,11 +135,11 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
 ];
 
 export const birthdayData: BirthdayData = {
-  passcode: "2410",
-  passcodeHint: "Clue: Tanggal jadian kita dong, masa lupa sih haha (4 angka yaa)",
+  passcode: "2306",
+  passcodeHint: "Clue: Tanggal jadian kita dong, masa lupa sih haha (4 angka: 23-06 yaa)",
   partnerName: "Sayang",
   birthdayDate: "24 Oktober",
-  relationshipStartDate: "2023-10-24", // Ganti dengan tanggal jadian / pertama kenal kalian
+  relationshipStartDate: "2023-06-23", // Tanggal jadian: 23 Juni 2023
 
   // Phase 0: Lockscreen Gate Photo (1.jpg)
   gatePhoto: {
