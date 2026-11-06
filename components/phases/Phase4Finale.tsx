@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Heart, Gift, PartyPopper } from "lucide-react";
+import { PartyPopper } from "lucide-react";
 import { birthdayData } from "@/config/birthdayData";
 import InteractiveCake from "@/components/finale/InteractiveCake";
+import CurtainReveal from "@/components/finale/CurtainReveal";
 import PolaroidScrapbook from "@/components/finale/PolaroidScrapbook";
 import EditorialLetter from "@/components/finale/EditorialLetter";
 import RelationshipCounter from "@/components/finale/RelationshipCounter";
@@ -30,13 +31,13 @@ export default function Phase4Finale() {
         </h2>
         <p className="text-xs sm:text-base text-taupe mt-2 max-w-md mx-auto">
           {isCandleBlown
-            ? "Semua doa baik telah terbang ke langit. Ini hadiah dan surat kecil dariku untukmu..."
+            ? "Semua doa baik telah terbang ke langit... Selamat menikmati setiap perayaan indah ini!"
             : "Make a wish dalam hati, lalu tiup lilin ulang tahunmu!"}
         </p>
       </motion.div>
 
       {/* The Assembled Birthday Cake Section */}
-      <div className="mb-10">
+      <div className="mb-6">
         <InteractiveCake
           isBlown={isCandleBlown}
           onCandleBlown={() => setIsCandleBlown(true)}
@@ -44,40 +45,33 @@ export default function Phase4Finale() {
         />
       </div>
 
-      {/* The Grand Reveal Content (Revealed after candle is blown) */}
-      <AnimatePresence>
-        {isCandleBlown && (
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-12"
-          >
-            {/* Scrapbook Gallery */}
-            <section aria-label="Scrapbook Gallery">
-              <PolaroidScrapbook />
-            </section>
+      {/* Theatrical Curtain Reveal Animation (Opens when candle is blown!) */}
+      <CurtainReveal isOpen={isCandleBlown}>
+        <div className="space-y-12">
+          {/* Scrapbook Gallery */}
+          <section aria-label="Scrapbook Gallery">
+            <PolaroidScrapbook />
+          </section>
 
-            {/* Editorial Birthday Letter */}
-            <section aria-label="Editorial Letter">
-              <EditorialLetter />
-            </section>
+          {/* Editorial Birthday Letter */}
+          <section aria-label="Editorial Letter">
+            <EditorialLetter />
+          </section>
 
-            {/* Live Relationship Counter */}
-            <section aria-label="Relationship Day Counter">
-              <RelationshipCounter />
-            </section>
+          {/* Live Relationship Counter */}
+          <section aria-label="Relationship Day Counter">
+            <RelationshipCounter />
+          </section>
 
-            {/* Final Warm Footer Note */}
-            <footer className="text-center py-8 text-taupe text-xs sm:text-sm font-serif">
-              <p>Dibuat dengan segenap cinta, tawa, dan doa terbaik untukmu ♡</p>
-              <p className="text-[11px] font-sans text-taupe/60 mt-1">
-                Selamat menikmati harimu, tersenyumlah selalu!
-              </p>
-            </footer>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {/* Final Warm Footer Note */}
+          <footer className="text-center py-8 text-taupe text-xs sm:text-sm font-serif">
+            <p>Dibuat dengan segenap cinta, tawa, dan doa terbaik untukmu ♡</p>
+            <p className="text-[11px] font-sans text-taupe/60 mt-1">
+              "Semua aku dirayakan..." • Selamat menikmati harimu, tersenyumlah selalu!
+            </p>
+          </footer>
+        </div>
+      </CurtainReveal>
     </div>
   );
 }

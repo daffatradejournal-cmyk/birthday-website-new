@@ -173,9 +173,13 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
 
         {/* Active Spinning Vinyl Turntable UI */}
         <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 pt-4 border-t border-taupe/10">
-          <div className="relative flex-shrink-0">
+          <div
+            className="relative flex-shrink-0 cursor-pointer group"
+            onClick={() => handleSelectTrack(selectedTrack)}
+            title="Klik piringan untuk memutar lagu"
+          >
             <div
-              className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-espresso flex items-center justify-center shadow-floating border-4 border-taupe/20 ${
+              className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-espresso flex items-center justify-center shadow-floating border-4 border-taupe/20 transition-transform duration-300 group-hover:scale-105 ${
                 isPlayingVinyl ? "animate-spin-slow" : ""
               }`}
             >
@@ -221,10 +225,10 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
             <button
               type="button"
               onClick={() => handleSelectTrack(selectedTrack)}
-              className="mt-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-espresso text-warmcard text-xs font-serif font-medium hover:bg-espresso-light transition-colors shadow-xs"
+              className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dusty-rose text-warmcard text-xs font-serif font-semibold hover:bg-dusty-rose-dark transition-all shadow-soft active:scale-95"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Putar Lagu di Controller</span>
+              <span>Putar Lagu Ini ({selectedTrack.artist})</span>
             </button>
           </div>
         </div>

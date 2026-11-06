@@ -50,16 +50,52 @@ export default function AudioController({
     })),
     {
       id: "bgm-ending",
-      title: "Birthday Waltz & Celebration",
-      artist: "Lagu Pesta Perayaan",
+      title: "Semua Aku Dirayakan",
+      artist: "Nadin Amizah",
       src: birthdayData.bgmEnding || birthdayData.audioTracks.ending,
-      tag: "Musik Puncak",
+      tag: "Musik Puncak • Nadin Amizah",
     },
   ];
 
   const currentTrack = playlist[activeTrackIndex] || playlist[0];
 
-  // Helper to safely play audio
+  // Direct, rock-solid audio playback function (NO 2-click delays!)
+  const playTrackDirectly = useCallback(
+    (index: number) => {
+      setActiveTrackIndex(index);
+      const target = playlist[index];
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      try {
+        const fullTarget = new URL(target.src, window.location.origin).href;
+        if (audio.src !== fullTarget) {
+          audio.src = target.src;
+        }
+        audio.currentTime = 0;
+        audio.muted = isMuted;
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+              setUseSynthFallback(false);
+            })
+            .catch((err) => {
+              console.warn("Audio autoplay blocked by browser policy, using fallback synth:", err);
+              setUseSynthFallback(true);
+              soundEngine.switchTrack(index === playlist.length - 1 ? "ending" : "main");
+            });
+        }
+      } catch (err) {
+        console.error("Playback error:", err);
+      }
+    },
+    [playlist, isMuted]
+  );
+
+  // Safe play helper
   const triggerPlay = useCallback(async () => {
     setIsPlaying(true);
     if (useSynthFallback) {
@@ -69,6 +105,9 @@ export default function AudioController({
 
     if (audioRef.current) {
       try {
+        if (!audioRef.current.src) {
+          audioRef.current.src = currentTrack.src;
+        }
         await audioRef.current.play();
         setUseSynthFallback(false);
       } catch {
@@ -78,7 +117,7 @@ export default function AudioController({
     } else {
       soundEngine.startBackgroundMusic(activeTrackIndex === playlist.length - 1 ? "ending" : "main");
     }
-  }, [activeTrackIndex, playlist.length, useSynthFallback]);
+  }, [activeTrackIndex, currentTrack.src, playlist.length, useSynthFallback]);
 
   const triggerPause = useCallback(() => {
     setIsPlaying(false);
@@ -107,47 +146,34 @@ export default function AudioController({
     soundEngine.setMute(nextMuted);
   };
 
-  const selectTrackByIndex = useCallback(
-    (index: number) => {
-      soundEngine.playClickSound();
-      setActiveTrackIndex(index);
-      const target = playlist[index];
-      if (audioRef.current) {
-        audioRef.current.src = target.src;
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-          setUseSynthFallback(false);
-        }).catch(() => {
-          setUseSynthFallback(true);
-          soundEngine.switchTrack(index === playlist.length - 1 ? "ending" : "main");
-        });
-      }
-    },
-    [playlist]
-  );
-
   const nextTrack = () => {
     const nextIdx = (activeTrackIndex + 1) % playlist.length;
-    selectTrackByIndex(nextIdx);
+    playTrackDirectly(nextIdx);
   };
+
+  // Initialize source once on mount
+  useEffect(() => {
+    if (audioRef.current && !audioRef.current.src) {
+      audioRef.current.src = playlist[0].src;
+    }
+  }, [playlist]);
 
   // Handle auto-start upon unlocking Phase 0
   useEffect(() => {
     if (autoStartOnPhase0Unlock && currentPhase >= 1 && !isPlaying) {
-      triggerPlay();
+      playTrackDirectly(0);
     }
-  }, [currentPhase, autoStartOnPhase0Unlock, isPlaying, triggerPlay]);
+  }, [currentPhase, autoStartOnPhase0Unlock, isPlaying, playTrackDirectly]);
 
   // Global events listener
   useEffect(() => {
-    // 1. Play custom track (e.g. from Jukebox in Phase 2)
+    // 1. Play custom track (INSTANT 1-CLICK from Jukebox in Phase 2)
     const handleCustomPlay = (e: Event) => {
       const customEvent = e as CustomEvent<{ audioSrc: string }>;
       if (customEvent.detail && customEvent.detail.audioSrc) {
         const foundIdx = playlist.findIndex((p) => p.src === customEvent.detail.audioSrc);
         if (foundIdx !== -1) {
-          selectTrackByIndex(foundIdx);
+          playTrackDirectly(foundIdx);
         }
       }
     };
@@ -161,10 +187,10 @@ export default function AudioController({
       }
     };
 
-    // 3. Play finale celebration music (when candle is blown in Phase 4)
+    // 3. Play finale celebration music ("Semua Aku Dirayakan - Nadin Amizah" when candle is blown)
     const handlePlayFinale = () => {
       const endingIndex = playlist.length - 1;
-      selectTrackByIndex(endingIndex);
+      playTrackDirectly(endingIndex);
     };
 
     window.addEventListener("play-custom-track", handleCustomPlay as EventListener);
@@ -176,7 +202,7 @@ export default function AudioController({
       window.removeEventListener("ensure-music-playing", handleEnsurePlaying);
       window.removeEventListener("play-finale-music", handlePlayFinale);
     };
-  }, [playlist, selectTrackByIndex]);
+  }, [playlist, playTrackDirectly]);
 
   // Audio element event listeners
   useEffect(() => {
@@ -219,10 +245,13 @@ export default function AudioController({
 
   return (
     <>
-      {/* Hidden HTML5 Audio Element with continuous loop */}
+      {/* 
+        CRUCIAL FIX FOR 1-CLICK:
+        Audio element is uncontrolled by React's src prop. 
+        Setting src imperatively avoids React re-render abort interruptions!
+      */}
       <audio
         ref={audioRef}
-        src={currentTrack.src}
         preload="auto"
         loop
         playsInline
@@ -264,7 +293,7 @@ export default function AudioController({
                 />
               </div>
 
-              {/* Playlist items without # tags */}
+              {/* Playlist items */}
               <div className="space-y-1 mb-3 pt-1 border-t border-taupe/10">
                 <span className="text-[9px] uppercase tracking-wider text-taupe/70 font-semibold block px-1">
                   Daftar Lagu ({playlist.length} Pilihan)
@@ -273,7 +302,7 @@ export default function AudioController({
                   <button
                     key={item.id}
                     type="button"
-                    onClick={() => selectTrackByIndex(idx)}
+                    onClick={() => playTrackDirectly(idx)}
                     className={`w-full text-left px-2 py-1.5 rounded-lg text-xs transition-colors flex items-center justify-between ${
                       idx === activeTrackIndex
                         ? "bg-dusty-rose/15 text-dusty-rose-dark font-medium"

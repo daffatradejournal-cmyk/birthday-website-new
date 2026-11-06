@@ -72,15 +72,13 @@ export default function InteractiveCake({
     stopMicListening();
     firePastelConfetti();
 
-    // CRITICAL: Immediately switch to and play the Grand Finale Celebration Music!
+    // CRITICAL: Immediately switch to and play the Grand Finale Celebration Music (Semua Aku Dirayakan)!
     if (typeof window !== "undefined") {
       window.dispatchEvent(new CustomEvent("play-finale-music"));
     }
 
-    setTimeout(() => {
-      soundEngine.playSuccessChime();
-      onCandleBlown();
-    }, 400);
+    soundEngine.playSuccessChime();
+    onCandleBlown();
   };
 
   // Relight candle
