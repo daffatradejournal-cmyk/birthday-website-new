@@ -258,7 +258,7 @@ export default function AudioController({
       />
 
       {/* Floating Vinyl Audio Controller */}
-      <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end">
+      <div className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-40 flex flex-col items-end">
         <AnimatePresence>
           {isExpanded && (
             <motion.div
@@ -266,7 +266,7 @@ export default function AudioController({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="mb-2.5 w-72 p-3.5 rounded-2xl bg-warmcard/95 border border-taupe/15 shadow-floating backdrop-blur-md text-espresso max-h-[380px] overflow-y-auto"
+              className="mb-2.5 w-72 max-w-[calc(100vw-1.5rem)] p-3 sm:p-3.5 rounded-2xl bg-warmcard/95 border border-taupe/15 shadow-floating backdrop-blur-md text-espresso max-h-[380px] overflow-y-auto"
             >
               <div className="flex items-start justify-between gap-2 mb-2">
                 <div>

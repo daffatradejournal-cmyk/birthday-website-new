@@ -131,25 +131,25 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-6 sm:py-8">
+    <div className="w-full max-w-3xl mx-auto px-2.5 sm:px-4 py-2 sm:py-8">
       {/* Header without # tag */}
-      <div className="text-center mb-6">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 text-espresso text-xs font-serif italic mb-2">
+      <div className="text-center mb-2 sm:mb-6">
+        <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 text-espresso text-xs font-serif italic mb-2">
           <Flame className="w-3.5 h-3.5 text-dusty-rose" />
           Catch the Falling Wishes
         </span>
-        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
+        <h2 className="text-xl sm:text-3xl font-serif font-bold text-espresso">
           Tangkap Bintang Harapan
         </h2>
-        <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
+        <p className="hidden sm:block text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
           Tangkap bintang atau hati yang jatuh yaa, ada alasan kenapa aku sayang banget sama kamu di tiap bintangnya ✨
         </p>
 
         {/* Progress Counter */}
-        <div className="flex items-center justify-center gap-2 mt-3">
-          <div className="flex items-center gap-1.5 bg-warmcard px-3.5 py-1.5 rounded-full border border-taupe/15 shadow-xs">
-            <Star className="w-4 h-4 fill-butter text-amber-500" />
-            <span className="text-xs font-serif font-semibold text-espresso">
+        <div className="flex items-center justify-center gap-2 mt-1.5 sm:mt-3">
+          <div className="flex items-center gap-1.5 bg-warmcard px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-taupe/15 shadow-xs">
+            <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-butter text-amber-500" />
+            <span className="text-[11px] sm:text-xs font-serif font-semibold text-espresso">
               Bintang Terkumpul: {caughtCount} / {TARGET_STARS}
             </span>
           </div>
@@ -157,7 +157,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
       </div>
 
       {/* Floating Compliment Toast Display */}
-      <div className="min-h-[56px] mb-3 flex items-center justify-center">
+      <div className="min-h-[36px] sm:min-h-[56px] mb-2 sm:mb-3 flex items-center justify-center">
         <AnimatePresence mode="wait">
           {currentCompliment && (
             <motion.div
@@ -165,9 +165,9 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10 }}
-              className="px-5 py-2.5 rounded-2xl bg-warmcard/95 border border-dusty-rose/30 shadow-soft text-center max-w-md mx-auto"
+              className="px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-2xl bg-warmcard/95 border border-dusty-rose/30 shadow-soft text-center max-w-md mx-auto"
             >
-              <p className="text-xs sm:text-sm font-serif italic text-espresso">
+              <p className="text-[11px] sm:text-sm font-serif italic text-espresso">
                 {currentCompliment}
               </p>
             </motion.div>
@@ -175,12 +175,12 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
         </AnimatePresence>
       </div>
 
-      {/* Interactive Falling Sky Container */}
-      <div className="relative w-full h-[380px] sm:h-[420px] rounded-3xl bg-oat/50 border-2 border-taupe/20 shadow-soft overflow-hidden select-none backdrop-blur-xs">
+      {/* Interactive Falling Sky Container (Compact on mobile to avoid scrolling!) */}
+      <div className="relative w-full h-[300px] sm:h-[420px] rounded-2xl sm:rounded-3xl bg-oat/50 border-2 border-taupe/20 shadow-soft overflow-hidden select-none backdrop-blur-xs">
         {/* Soft background clouds & gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-alabaster/40 via-oat/30 to-dusty-rose/10 pointer-events-none" />
 
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] font-sans text-taupe/60 italic pointer-events-none">
+        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 text-[10px] sm:text-[11px] font-sans text-taupe/60 italic pointer-events-none">
           Klik atau sentuh bintang yang melayang ✨
         </div>
 

@@ -58,7 +58,7 @@ export default function PolaroidFrame({
       style={{ rotate: rotation }}
       whileHover={{ scale: 1.025, rotate: "0deg", zIndex: 10 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`relative bg-warmcard p-3 sm:p-4 pb-4 sm:pb-6 rounded-md shadow-polaroid hover:shadow-polaroid-hover border border-taupe/10 transition-shadow select-none ${className}`}
+      className={`relative bg-warmcard p-2 sm:p-4 pb-3 sm:pb-6 rounded-md shadow-polaroid hover:shadow-polaroid-hover border border-taupe/10 transition-shadow select-none ${className}`}
     >
       {/* Washi tape decoration at the top */}
       {showTape && (

@@ -108,17 +108,17 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 py-6 sm:py-8">
+    <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 py-3 sm:py-8">
       {/* Title Header without # tag */}
-      <div className="text-center mb-8">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dusty-rose/20 text-dusty-rose-dark text-xs font-serif italic mb-2">
+      <div className="text-center mb-3 sm:mb-8">
+        <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dusty-rose/20 text-dusty-rose-dark text-xs font-serif italic mb-2">
           <Sparkles className="w-3.5 h-3.5" />
           The Soundtrack & Soft Notes
         </span>
-        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
+        <h2 className="text-xl sm:text-3xl font-serif font-bold text-espresso">
           Lagu Kita & Amplop Surat
         </h2>
-        <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
+        <p className="text-[11px] sm:text-sm text-taupe mt-0.5 sm:mt-1 max-w-md mx-auto">
           Pilih lagu yang mau kamu dengerin, susun kalimat manis kita, terus buka semua amplopnya yaa ♡
         </p>
       </div>
@@ -127,7 +127,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
       <motion.section
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-warmcard/90 backdrop-blur-sm border border-taupe/15 rounded-3xl p-5 sm:p-7 shadow-soft mb-8 max-w-3xl mx-auto"
+        className="bg-warmcard/90 backdrop-blur-sm border border-taupe/15 rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 shadow-soft mb-5 sm:mb-8 max-w-3xl mx-auto"
       >
         {/* Jukebox Vinyl Selector Tabs without # tags */}
         <div className="mb-6">
@@ -193,7 +193,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
             title="Klik piringan untuk memutar lagu"
           >
             <div
-              className={`w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-espresso flex items-center justify-center shadow-floating border-4 border-taupe/20 transition-transform duration-300 group-hover:scale-105 ${
+              className={`w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-espresso flex items-center justify-center shadow-floating border-4 border-taupe/20 transition-transform duration-300 group-hover:scale-105 ${
                 isPlayingVinyl ? "animate-spin-slow" : ""
               }`}
             >

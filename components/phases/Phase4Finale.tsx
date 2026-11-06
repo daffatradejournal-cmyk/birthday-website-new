@@ -70,15 +70,15 @@ export default function Phase4Finale() {
           transition={{ duration: 0.3 }}
         >
           {/* Header */}
-          <div className="text-center mb-8">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dusty-rose/20 text-dusty-rose-dark text-xs font-serif italic mb-2">
+          <div className="text-center mb-3 sm:mb-8">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dusty-rose/20 text-dusty-rose-dark text-xs font-serif italic mb-2">
               <PartyPopper className="w-3.5 h-3.5 text-dusty-rose" />
               The Grand Birthday Celebration
             </span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-espresso tracking-tight">
+            <h2 className="text-2xl sm:text-5xl font-serif font-bold text-espresso tracking-tight">
               Selamat Ulang Tahun, {birthdayData.partnerName}! 🎂
             </h2>
-            <p className="text-xs sm:text-base text-taupe mt-2 max-w-md mx-auto">
+            <p className="text-[11px] sm:text-base text-taupe mt-1 sm:mt-2 max-w-md mx-auto">
               Pejamkan mata bentar, make a wish dalam hati, terus tiup lilinnya yaa sayang!
             </p>
           </div>

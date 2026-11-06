@@ -48,19 +48,19 @@ export default function TopProgressBar({
 
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-alabaster/85 border-b border-taupe/10 transition-colors">
-      <div className="max-w-4xl mx-auto px-4 py-3 sm:py-3.5">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 py-1.5 sm:py-3.5">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Left badge */}
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-dusty-rose/20 text-dusty-rose text-xs font-serif font-bold">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <span className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-dusty-rose/20 text-dusty-rose text-[10px] sm:text-xs font-serif font-bold">
               ✦
             </span>
             <div className="text-left">
-              <span className="text-[11px] uppercase tracking-widest text-taupe block font-medium">
+              <span className="hidden sm:block text-[11px] uppercase tracking-widest text-taupe font-medium">
                 Perjalanan Hari Spesial
               </span>
-              <p className="text-xs sm:text-sm font-serif font-semibold text-espresso">
-                Sedang Membuka:{" "}
+              <p className="text-[11px] sm:text-sm font-serif font-semibold text-espresso">
+                <span className="hidden sm:inline">Sedang: </span>
                 <span className="text-dusty-rose font-medium">
                   {MILESTONES[Math.min(currentPhase - 1, 3)].title}
                 </span>
@@ -69,7 +69,7 @@ export default function TopProgressBar({
           </div>
 
           {/* Stepper pills */}
-          <nav aria-label="Progress" className="flex items-center gap-1.5 sm:gap-2">
+          <nav aria-label="Progress" className="flex items-center gap-1 sm:gap-2">
             {MILESTONES.map((milestone, idx) => {
               const isCompleted = milestone.phase < currentPhase;
               const isCurrent = milestone.phase === currentPhase;

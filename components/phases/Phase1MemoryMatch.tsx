@@ -118,21 +118,21 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-6 sm:py-8">
+    <div className="w-full max-w-3xl mx-auto px-2.5 sm:px-4 py-2 sm:py-8">
       {/* Title & Instructions */}
-      <div className="text-center mb-6 sm:mb-8">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 border border-butter-light text-espresso text-xs font-serif italic mb-2">
+      <div className="text-center mb-2 sm:mb-6">
+        <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 border border-butter-light text-espresso text-xs font-serif italic mb-2">
           <Cake className="w-3.5 h-3.5 text-dusty-rose" />
           Kenangan Lucu Kita
         </span>
-        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
+        <h2 className="text-xl sm:text-3xl font-serif font-bold text-espresso">
           Buka Kenangan Kita Berdua
         </h2>
-        <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
+        <p className="hidden sm:block text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
           Coba cocokin dua foto yang sama yaa, sambil bernostalgia momen kita berdua ♡
         </p>
 
-        <div className="flex items-center justify-center gap-4 mt-3 text-xs text-taupe font-medium">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 mt-1.5 sm:mt-3 text-[11px] sm:text-xs text-taupe font-medium">
           <span>
             Pasangan:{" "}
             <strong className="text-espresso font-semibold">
@@ -147,7 +147,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
           <button
             type="button"
             onClick={initGame}
-            className="inline-flex items-center gap-1 ml-2 text-taupe hover:text-espresso transition-colors"
+            className="inline-flex items-center gap-1 ml-1 sm:ml-2 text-taupe hover:text-espresso transition-colors"
             title="Kocok Ulang"
           >
             <RotateCcw className="w-3 h-3" />
@@ -157,7 +157,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
       </div>
 
       {/* Floating Memory Match Toast */}
-      <div className="min-h-[50px] mb-4 flex items-center justify-center">
+      <div className="min-h-[36px] sm:min-h-[50px] mb-2 sm:mb-4 flex items-center justify-center">
         <AnimatePresence>
           {activeToast && (
             <motion.div
@@ -165,9 +165,9 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
               initial={{ opacity: 0, y: 10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -5 }}
-              className="bg-warmcard/95 border border-dusty-rose/30 px-4 py-2 rounded-2xl shadow-soft text-center max-w-md mx-auto"
+              className="bg-warmcard/95 border border-dusty-rose/30 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl shadow-soft text-center max-w-md mx-auto"
             >
-              <p className="text-xs sm:text-sm font-serif italic text-espresso">
+              <p className="text-[11px] sm:text-sm font-serif italic text-espresso">
                 "{activeToast.caption}"
               </p>
             </motion.div>
@@ -175,8 +175,8 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
         </AnimatePresence>
       </div>
 
-      {/* 4x2 Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-2xl mx-auto">
+      {/* 4x2 Cards Grid (4 columns x 2 rows on mobile so all 8 cards fit without scrolling!) */}
+      <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-2xl mx-auto">
         {cards.map((card, idx) => {
           const isFlipped =
             flippedIndices.includes(idx) || matchedPairIds.includes(card.pairId);
@@ -193,22 +193,22 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.45, ease: "easeInOut" }}
               >
-                {/* Back of the card (Editorial Scrapbook Paper Pattern) without # tag */}
-                <div className="absolute inset-0 w-full h-full rounded-xl bg-warmcard border-2 border-taupe/15 flex flex-col items-center justify-center p-3 text-center [backface-visibility:hidden] hover:border-dusty-rose/50 transition-colors">
-                  <div className="w-12 h-12 rounded-full bg-oat flex items-center justify-center border border-taupe/20 mb-2">
-                    <span className="font-serif text-lg text-dusty-rose">✦</span>
+                {/* Back of the card (Scrapbook Paper Pattern) */}
+                <div className="absolute inset-0 w-full h-full rounded-xl bg-warmcard border border-taupe/20 sm:border-2 sm:border-taupe/15 flex flex-col items-center justify-center p-1.5 sm:p-3 text-center [backface-visibility:hidden] hover:border-dusty-rose/50 transition-colors">
+                  <div className="w-7 h-7 sm:w-12 sm:h-12 rounded-full bg-oat flex items-center justify-center border border-taupe/20 mb-1 sm:mb-2">
+                    <span className="font-serif text-xs sm:text-lg text-dusty-rose">✦</span>
                   </div>
-                  <span className="text-[10px] uppercase font-sans tracking-widest text-taupe/70 font-semibold">
-                    Kenangan Kita
+                  <span className="text-[8px] sm:text-[10px] uppercase font-sans tracking-tight sm:tracking-widest text-taupe/70 font-semibold line-clamp-1">
+                    Kenangan
                   </span>
-                  <div className="absolute bottom-2 text-[9px] text-taupe/50 italic font-serif">
+                  <div className="hidden sm:block absolute bottom-2 text-[9px] text-taupe/50 italic font-serif">
                     Klik buat buka
                   </div>
                 </div>
 
-                {/* Front of the card (Polaroid Photo with standard img tag) */}
-                <div className="absolute inset-0 w-full h-full rounded-xl bg-warmcard border-2 border-dusty-rose/40 p-2 flex flex-col items-center justify-between [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden">
-                  <div className="relative w-full h-[76%] rounded-lg overflow-hidden bg-oat">
+                {/* Front of the card (Polaroid Photo) */}
+                <div className="absolute inset-0 w-full h-full rounded-xl bg-warmcard border border-dusty-rose/40 sm:border-2 p-1 sm:p-2 flex flex-col items-center justify-between [transform:rotateY(180deg)] [backface-visibility:hidden] overflow-hidden">
+                  <div className="relative w-full h-[76%] rounded-md sm:rounded-lg overflow-hidden bg-oat">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={card.localSrc}
@@ -220,13 +220,13 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                       }}
                     />
                     {isMatched && (
-                      <div className="absolute top-1.5 right-1.5 bg-sage text-warmcard p-0.5 rounded-full shadow-xs">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      <div className="absolute top-1 right-1 bg-sage text-warmcard p-0.5 rounded-full shadow-xs">
+                        <CheckCircle2 className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                       </div>
                     )}
                   </div>
-                  <div className="h-[20%] w-full flex items-center justify-center px-1">
-                    <span className="text-[10px] font-serif font-medium text-espresso text-center line-clamp-1">
+                  <div className="h-[20%] w-full flex items-center justify-center px-0.5">
+                    <span className="text-[8px] sm:text-[10px] font-serif font-medium text-espresso text-center line-clamp-1">
                       {card.alt}
                     </span>
                   </div>

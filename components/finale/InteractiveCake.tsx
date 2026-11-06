@@ -167,7 +167,7 @@ export default function InteractiveCake({
   return (
     <div className="flex flex-col items-center justify-center">
       {/* SVG Birthday Cake Container */}
-      <div className="relative w-64 sm:w-72 h-72 sm:h-80 select-none">
+      <div className="relative w-56 sm:w-72 h-60 sm:h-80 select-none">
         <svg
           viewBox="0 0 300 320"
           className="w-full h-full drop-shadow-md"
