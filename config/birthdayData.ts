@@ -213,12 +213,12 @@ export const birthdayData: BirthdayData = {
   softNotes: [
     {
       id: 1,
-      title: "Baca pas lagi capek",
+      title: "Baca pas lagi cape",
       subtitle: "Buka pas hari kamu lagi berat yaa...",
       stampEmoji: "☕",
       sealColor: "#D8A796",
       content:
-        "Hei, kalau hari ini rasanya berat dan kamu ngerasa capek sama semuanya, senderin dulu kepalamu yaa.\n\nKamu tuh udah berusaha sekeren itu hari ini. Ga apa-apa banget buat istirahat dulu, ga usah maksain ngerjain semuanya sekaligus. Kapan pun kamu butuh tempat cerita atau sekadar pelukan hangat, aku selalu ada di sini buat kamu.\n\nIstirahat yang cukup yaa sayangku, jangan begadang mulu.",
+        "Hai sayangg, kalau hari ini rasanya berat dan km ngerasa cape bgt sama semuanya, senderin dulu kepala km ya.\n\nKm udah sampai tahap ini aja udah keren, gpp bgt buat istirahat dulu sebentar, ga harus cepat-cepat ko buat kejar semuanya sekaligus, ingat yaa kapan pun km butuh ak buat cerita atau minta dipeluk, ak selalu ada buat km disini ayy.\n\nIstirahat yang cukup ya sayangku.",
     },
     {
       id: 2,
@@ -227,7 +227,7 @@ export const birthdayData: BirthdayData = {
       stampEmoji: "🌷",
       sealColor: "#9CAF9E",
       content:
-        "Hal-hal random yang mungkin kamu ga sadar, tapi selalu sukses bikin aku jatuh cinta lagi:\n\nCaramu ngerutin alis pas lagi mikir keras, ketawa lepasmu yang nular ke mana-mana, kebiasaan ngirim pap makanan tanpa aba-aba, sama muka bantalmu pas baru melek.\n\nSederhana banget kan? Tapi ya hal-hal kecil kayak gitu yang bikin aku ngerasa beruntung banget punya kamu.",
+        "Hal-hal random yang mungkin km ga sadar, tapi selalu sukses buat bikin ak jatuh cinta lagi:\n\nDari cara km bercanda dan nunjukin diri km sendiri ke aku dengan candaan km, ketawa lepas km, kebiasaan kecil km ngirim pap makanan tiba-tiba.\n\nMungkin itu hal yang sederhana, tapi ya hal-hal kecil kaya gitu yang bikin aku selalu ngerasa beruntung banget punya km.",
     },
     {
       id: 3,
@@ -236,7 +236,7 @@ export const birthdayData: BirthdayData = {
       stampEmoji: "💌",
       sealColor: "#C87D65",
       content:
-        "Jujur, dari sekian banyak orang di dunia, cuma sama kamu aku bisa jadi diriku sendiri yang paling aneh, cengeng, dan apa adanya tanpa takut dihakimi.\n\nKamu ga pernah nuntut aku buat jadi orang lain, dan caramu dengerin ceritaku tuh selalu bikin hatiku tenang banget. Sesederhana itu jawabannya: karena kamu itu rumah buat aku.",
+        "Jujur, dari sekian banyak orang di dunia ini, cuma sama km aku bisa jadi diriku sendiri yang paling aneh, yang km terima apa adanya, dari mulai manjaku, takutku tanpa ak harus takut dihakimi.\n\nKm ga pernah nuntut aku buat jadi orang lain, dan cara dan respon km pas dengarkan aku cerita ituu selalu bikin hati ak tenang, walopun km belum bisa kontrol ego sama emosi km kewkekekwkwk, tapi kalo jawabannya disederhanakan: karena km itu rumah buat aku pulang.",
     },
     {
       id: 4,
@@ -245,7 +245,7 @@ export const birthdayData: BirthdayData = {
       stampEmoji: "✨",
       sealColor: "#F3E5AB",
       content:
-        "Selamat ulang tahun yaa sayangku.\n\nDi umurmu yang baru ini, aku cuma pengen kamu selalu bahagia, sehat terus badannya, dan dijauhin dari hal-hal yang bikin sedih. Semoga apa pun yang lagi kamu usahain pelan-pelan nemu jalannya.\n\nDan semoga, di setiap ulang tahunmu ke depan, kita masih tetep sama-sama ngerayain kayak gini.",
+        "Selamat ulang tahun ya sayangku.\n\nDi umur km yang baru ini, aku cuman pengen km selalu bahagia, sehat selalu, dan dijauhkan dari hal-hal yang bikin km sedih. Semoga apapun yang lagi km usahakan pelan-pelan nemu jalannya.\n\nDan semoga, di setiap ulang tahun km kedepannya, kita masih tetap sama-sama ngerayakan kaya gini yaa..",
     },
   ],
 
