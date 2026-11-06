@@ -82,28 +82,28 @@ const memoryGamePhotosList: MemoryPhotoItem[] = [
     localSrc: "/photos/2.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80",
     alt: "Foto Kenangan 1",
-    caption: "Momen ini pas kamu ketawa lepas banget, padahal jokes-nya garing!",
+    caption: "Ini pas kita ketawa receh banget, padahal jokes-ku garing tapi kamu tetep ketawa haha",
   },
   {
     id: 2,
     localSrc: "/photos/3.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
     alt: "Foto Kenangan 2",
-    caption: "Muka ngambek paling gemas sedunia, tapi 5 menit kemudian laper lagi.",
+    caption: "Muka ngambek andalan kamu kalau telat diajak makan, gemes banget asli",
   },
   {
     id: 3,
     localSrc: "/photos/4.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80",
     alt: "Foto Kenangan 3",
-    caption: "First date vibes! Masih malu-malu curi pandang seharian.",
+    caption: "Momen waktu kita masih malu-malu kucing, padahal saltingnya keliatan banget",
   },
   {
     id: 4,
     localSrc: "/photos/5.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80",
     alt: "Foto Kenangan 4",
-    caption: "Jalan sore santai berdua, tanpa buru-buru, cuma ada kita dan angin senja.",
+    caption: "Sore santai yang tenang banget berdua, ga usah ke mana-mana yang penting bareng kamu",
   },
 ];
 
@@ -112,7 +112,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
     id: 1,
     localSrc: "/photos/10.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
-    caption: "Hari pertama kita nongkrong berjam-jam sampai lupa waktu.",
+    caption: "Nongkrong berjam-jam tapi ga kerasa waktu jalan secepet itu.",
     date: "24 Okt 2023",
     rotation: "-2.5deg",
   },
@@ -120,7 +120,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
     id: 2,
     localSrc: "/photos/11.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-    caption: "Senyum favoritku, selalu bikin hatiku tenang dan damai.",
+    caption: "Senyum favoritku tiap kali kamu lagi hepi hal-hal kecil.",
     date: "14 Des 2023",
     rotation: "2deg",
   },
@@ -128,7 +128,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
     id: 3,
     localSrc: "/photos/12.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
-    caption: "Jalan-jalan sore bareng, menikmati indahnya langit dan genggamanmu.",
+    caption: "Momen jalan sore berdua, ga usah banyak ngomong pun udah nyaman banget.",
     date: "02 Feb 2024",
     rotation: "-1.5deg",
   },
@@ -136,7 +136,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
 
 export const birthdayData: BirthdayData = {
   passcode: "2410",
-  passcodeHint: "Hint: Tanggal spesial kita (4 angka: 24-10)",
+  passcodeHint: "Clue: Tanggal jadian kita dong, masa lupa sih haha (4 angka yaa)",
   partnerName: "Sayang",
   birthdayDate: "24 Oktober",
   relationshipStartDate: "2023-10-24", // Ganti dengan tanggal jadian / pertama kenal kalian
@@ -145,7 +145,7 @@ export const birthdayData: BirthdayData = {
   gatePhoto: {
     localSrc: "/photos/1.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-    caption: "Verifikasi dulu: Cuma yang punya senyum ini yang boleh masuk.",
+    caption: "Tatap layarnya dulu bentar... cuma pemilik senyum paling gemesin ini yang boleh masuk :p",
   },
 
   bgmMain: "/audio/bgm-main.mp3",
@@ -168,7 +168,7 @@ export const birthdayData: BirthdayData = {
       audioSrc: "/audio/song-1.mp3",
       coverSrc: "/photos/6.jpg",
       fallbackCoverSrc: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80",
-      description: "Lagu yang mengajarkan tentang cinta yang bertahan melampaui waktu.",
+      description: "Lagu yang selalu bikin aku mikir: yuk menua bareng sampai beneran jadi debu.",
     },
     {
       id: 2,
@@ -177,7 +177,7 @@ export const birthdayData: BirthdayData = {
       audioSrc: "/audio/song-2.mp3",
       coverSrc: "/photos/7.jpg",
       fallbackCoverSrc: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80",
-      description: "Karena pada akhirnya, rumah ternyaman adalah hatimu.",
+      description: "Udah keliling ke mana-mana, tetep aja pulangnya paling nyaman ya ke kamu.",
     },
     {
       id: 3,
@@ -186,7 +186,7 @@ export const birthdayData: BirthdayData = {
       audioSrc: "/audio/song-3.mp3",
       coverSrc: "/photos/8.jpg",
       fallbackCoverSrc: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?auto=format&fit=crop&w=600&q=80",
-      description: "Hal-hal sederhana yang selalu kita rayakan berdua penuh rasa syukur.",
+      description: "Hal-hal kecil sama kamu selalu berasa romantis, sesimpel jajan sore bareng.",
     },
     {
       id: 4,
@@ -195,66 +195,66 @@ export const birthdayData: BirthdayData = {
       audioSrc: "/audio/song-4.mp3",
       coverSrc: "/photos/9.jpg",
       fallbackCoverSrc: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=600&q=80",
-      description: "Betapa tenangnya dunia saat melihatmu terlelap dengan damai.",
+      description: "Paling suka liatin muka kamu pas tidur pules, damai banget rasanya.",
     },
   ],
 
   songQuiz: {
-    title: "The Soundtrack of Us",
-    subtitle: "Susun kata-kata romantis ini untuk membuka amplop rahasia:",
+    title: "Lagu Cerita Kita",
+    subtitle: "Susun kalimat manis ini dulu yaa buat buka amplopnya:",
     songTitle: "Until I Found You",
     songArtist: "Stephen Sanchez",
     scrambledPhraseWords: ["hadir", "sudah", "Terima", "di", "kasih", "hidupku"],
     correctPhrase: "Terima kasih sudah hadir di hidupku",
-    hint: "Ketik atau klik kata sesuai urutan kalimat syukur kita.",
-    revealedMessage: "Lagu yang selalu bikin aku ingat betapa beruntungnya aku punya kamu di sisiku.",
+    hint: "Klik kata sesuai urutannya yaa sayang.",
+    revealedMessage: "Beneran, makasih banyak yaa udah hadir dan bikin hari-hariku jauh lebih berwarna ♡",
   },
 
   softNotes: [
     {
       id: 1,
       title: "Baca pas lagi capek",
-      subtitle: "Buka saat harimu terasa berat...",
+      subtitle: "Buka pas hari kamu lagi berat yaa...",
       stampEmoji: "☕",
       sealColor: "#D8A796",
       content:
-        "Hai manisku, kalau dunia hari ini lagi terlalu berisik dan bikin lelah, tarik napas pelan-pelan ya. Kamu udah berjuang hebat banget hari ini. Ingat ya, kamu nggak perlu nanggung semuanya sendirian. Ada aku di sini yang selalu bangga sama setiap langkah kecilmu. Istirahat yang cukup ya, sayangku.",
+        "Hei, kalau hari ini rasanya berat dan kamu ngerasa capek sama semuanya, senderin dulu kepalamu yaa.\n\nKamu tuh udah berusaha sekeren itu hari ini. Ga apa-apa banget buat istirahat dulu, ga usah maksain ngerjain semuanya sekaligus. Kapan pun kamu butuh tempat cerita atau sekadar pelukan hangat, aku selalu ada di sini buat kamu.\n\nIstirahat yang cukup yaa sayangku, jangan begadang mulu.",
     },
     {
       id: 2,
-      title: "Hal kecil yang aku suka dari kamu",
-      subtitle: "Daftar sederhana tapi bikin jatuh cinta berkali-kali...",
+      title: "Hal kecil yang bikin aku naksir lagi",
+      subtitle: "Hal-hal random yang bikin makin sayang...",
       stampEmoji: "🌷",
       sealColor: "#9CAF9E",
       content:
-        "Caramu ngernyitin dahi pas lagi mikir keras, kebiasaan ngirim foto random makanan tanpa aba-aba, nada suaramu pas baru bangun tidur, dan tatapan tulusmu tiap kali dengerin ceritaku. Hal-hal sesederhana itu yang bikin duniaku terasa jauh lebih hangat.",
+        "Hal-hal random yang mungkin kamu ga sadar, tapi selalu sukses bikin aku jatuh cinta lagi:\n\nCaramu ngerutin alis pas lagi mikir keras, ketawa lepasmu yang nular ke mana-mana, kebiasaan ngirim pap makanan tanpa aba-aba, sama muka bantalmu pas baru melek.\n\nSederhana banget kan? Tapi ya hal-hal kecil kayak gitu yang bikin aku ngerasa beruntung banget punya kamu.",
     },
     {
       id: 3,
-      title: "Kenapa harus kamu",
-      subtitle: "Jawaban yang nggak pernah berubah...",
+      title: "Kenapa harus kamu?",
+      subtitle: "Jawaban jujur dari lubuk hatiku...",
       stampEmoji: "💌",
       sealColor: "#C87D65",
       content:
-        "Karena bersama kamu, rumah bukan lagi sekadar tempat, tapi perasaan. Kamu bikin aku merasa aman menjadi diriku yang seutuhnya—tanpa topeng, tanpa takut dihakimi. Nggak ada orang lain yang bisa bikin hatiku setenang ini selain kamu.",
+        "Jujur, dari sekian banyak orang di dunia, cuma sama kamu aku bisa jadi diriku sendiri yang paling aneh, cengeng, dan apa adanya tanpa takut dihakimi.\n\nKamu ga pernah nuntut aku buat jadi orang lain, dan caramu dengerin ceritaku tuh selalu bikin hatiku tenang banget. Sesederhana itu jawabannya: karena kamu itu rumah buat aku.",
     },
     {
       id: 4,
-      title: "Doa di umur baru",
-      subtitle: "Harapan paling tulus untukmu hari ini...",
+      title: "Doa buat umur barumu",
+      subtitle: "Harapan paling tulus di hari spesialmu...",
       stampEmoji: "✨",
       sealColor: "#F3E5AB",
       content:
-        "Di usia barumu ini, aku berdoa semoga bahagiamu makin melimpah, langkahmu dimudahkan, semua impian yang kamu bisikkan dalam doa pelan-pelan terwujud, dan hatimu selalu dipeluk damai. Dan kalau diizinkan semesta, aku mau ada di setiap ulang tahunmu berikutnya.",
+        "Selamat ulang tahun yaa sayangku.\n\nDi umurmu yang baru ini, aku cuma pengen kamu selalu bahagia, sehat terus badannya, dan dijauhin dari hal-hal yang bikin sedih. Semoga apa pun yang lagi kamu usahain pelan-pelan nemu jalannya.\n\nDan semoga, di setiap ulang tahunmu ke depan, kita masih tetep sama-sama ngerayain kayak gini.",
     },
   ],
 
   wishesStarCompliments: [
-    "Caramu ketawa pas lagi salah tingkah bikin hari-hariku cerah! ✨",
-    "Sabarnya kamu pas ngadepin moody-nya aku itu luar biasa. 🤍",
-    "Tatapan mata kamu yang selalu nenangin tiap duniaku lagi ribut. 🌙",
-    "Gimana kamu selalu bangga dan percaya sama semua mimpiku. 🌸",
-    "Senyum manismu yang nggak pernah gagal bikin hatiku luluh. 🍰",
+    "Caramu ketawa pas lagi salting tuh lucu banget tau ga! 🤍",
+    "Makasih yaa udah selalu sabar ngadepin sifatku yang kadang rewel ✨",
+    "Tiap lagi pusing sama dunia, liat senyummu tuh rasanya langsung tenang 🌙",
+    "Dukungan kecil dari kamu selalu jadi alasan aku semangat terus 🌸",
+    "Senyum manismu ga pernah gagal bikin hari-hariku cerah lagi 🍰",
   ],
 
   // Phase 4: Finale Polaroids (10.jpg, 11.jpg, 12.jpg)
@@ -262,14 +262,14 @@ export const birthdayData: BirthdayData = {
   galleryPhotos: finalePolaroidsList, // Compatibility alias
 
   mainLetter: {
-    greeting: "Selamat Ulang Tahun, Manisku.",
+    greeting: "Selamat Ulang Tahun, Sayangku.",
     paragraphs: [
-      "Hari ini adalah hari yang paling aku syukuri di seluruh kalender, karena di tanggal inilah sosok yang paling berharga di hidupku lahir ke dunia.",
-      "Terima kasih sudah menjadi manusia yang begitu hangat, penyabar, dan selalu membawa ketenangan di setiap hari-hariku yang sering kali penuh hiruk-pikuk. Kehadiranmu bukan cuma melengkapi, tapi mengajari aku bagaimana rasanya dicintai tanpa syarat.",
-      "Di babak umurmu yang baru ini, aku berdoa agar semesta selalu berbaik hati padamu. Semoga langkahmu selalu diringankan, pundakmu dikuatkan, dan impian-impian besarmu satu per satu mekar menjadi kenyataan yang indah. Jangan pernah ragu sama kemampuanmu, karena bagiku kamu selalu luar biasa.",
-      "Terima kasih sudah memilih untuk berjalan bersamaku. Semoga kita terus bisa saling memeluk dalam tawa, saling menguatkan saat lelah, dan merayakan tahun demi tahun ke depan dengan genggaman tangan yang tak pernah lepas.",
+      "Selamat bertambah umur buat orang paling spesial di hidupku! Hari ini aku cuma pengen bilang makasih banyak. Makasih udah lahir ke dunia, makasih udah tumbuh jadi orang sebaik, sehangat, dan sepengertian ini.",
+      "Makasih yaa udah selalu ada nemenin hari-hariku. Mau pas lagi seru-serunya ketawa bareng, sampai pas duniaku lagi berat dan kepalaku lagi berisik, kamu ga pernah sekalipun ninggalin aku sendirian. Ada kamu di sampingku tuh bikin hariku yang kadang berantakan jadi terasa jauh lebih tenang dan teratur.",
+      "Di umur barumu ini, aku bener-bener doain semoga kamu selalu sehat, rezekimu lancar, langkahmu selalu dimudahkan, dan hal-hal baik selalu datang ke hidup kamu. Jangan pernah ngerasa sendirian atau ngeremehin kemampuanmu sendiri ya, kamu tuh jauh lebih hebat dan berharga dari yang kamu bayangin.",
+      "Yuk terus bareng-bareng yaa? Lewatin hari-hari ke depan, saling gandeng tangan, saling kuatin kalau lagi lelah, dan terus bikin kenangan lucu berdua. I love you so much, more than words could ever say.",
     ],
-    closing: "Selalu mencintaimu di setiap detik,",
-    senderName: "Dari yang selalu mengagumimu ♡",
+    closing: "Peluk hangat dan sayang selalu,",
+    senderName: "Dari aku yang selalu sayang kamu ♡",
   },
 };

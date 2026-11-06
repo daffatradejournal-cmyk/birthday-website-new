@@ -102,10 +102,10 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
           The Soundtrack & Soft Notes
         </span>
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
-          Melodi Cinta & Surat Kecil
+          Lagu Kita & Amplop Surat
         </h2>
         <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
-          Pilih piringan hitam lagu kita, susun bait liriknya, lalu buka seluruh amplop surat cinta.
+          Pilih lagu yang mau kamu dengerin, susun kalimat manis kita, terus buka semua amplopnya yaa ♡
         </p>
       </div>
 
@@ -120,10 +120,10 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
           <div className="flex items-center justify-between mb-3">
             <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-dusty-rose flex items-center gap-1.5">
               <Disc3 className="w-3.5 h-3.5" />
-              Vinyl Jukebox • Lagu Pilihan Kita
+              Playlist Favorit Kita
             </span>
             <span className="text-[11px] text-taupe font-serif italic">
-              Klik piringan untuk memutar
+              Pilih lagu yang mau kamu putar
             </span>
           </div>
 
@@ -213,7 +213,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
           {/* Active Track Info & Play Button */}
           <div className="flex-1 text-center sm:text-left">
             <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-dusty-rose block">
-              Sedang Diputar
+              Lagu yang lagi diputar
             </span>
             <h3 className="text-lg sm:text-xl font-serif font-bold text-espresso">
               {selectedTrack.artist} — {selectedTrack.title}
@@ -228,7 +228,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-dusty-rose text-warmcard text-xs font-serif font-semibold hover:bg-dusty-rose-dark transition-all shadow-soft active:scale-95"
             >
               <Play className="w-3.5 h-3.5 fill-current" />
-              <span>Putar Lagu Ini ({selectedTrack.artist})</span>
+              <span>Putar Lagu Ini 🎵</span>
             </button>
           </div>
         </div>
@@ -237,7 +237,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
         <div className="mt-6 pt-5 border-t border-taupe/10">
           <div className="text-center sm:text-left mb-3">
             <h4 className="text-sm font-serif font-bold text-espresso">
-              Susun Bait Lirik Lagu Kita:
+              Tebak Kalimat Spesial Kita:
             </h4>
             <p className="text-xs text-taupe">
               {isQuizSolved ? quizConfig.revealedMessage : quizConfig.subtitle}
@@ -255,7 +255,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
           >
             {selectedWords.length === 0 ? (
               <span className="text-xs text-taupe/60 italic font-serif">
-                Pilih kata-kata di bawah sesuai urutan...
+                Klik kata-kata di bawah sesuai urutannya yaa...
               </span>
             ) : (
               selectedWords.map((word, i) => (
@@ -271,7 +271,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
 
           {quizError && (
             <p className="text-xs text-rose-500 text-center mt-2 font-medium">
-              Susunannya belum pas nih. Coba klik reset dan ulang lagi ya sayang ♡
+              Eh, susunannya belum pas nih. Coba klik tombol reset terus susun lagi yaa :)
             </p>
           )}
 
@@ -309,7 +309,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               className="mt-3 text-center text-xs font-serif font-medium text-sage-dark bg-sage/15 py-1.5 px-4 rounded-full inline-flex items-center gap-1.5 mx-auto w-full justify-center"
             >
               <CheckCircle className="w-4 h-4 text-sage-dark" />
-              <span>Bait lirik terpecahkan! Seluruh amplop rahasia telah terbuka.</span>
+              <span>Bener banget! Sekarang semua amplop di bawah udah bisa kamu buka ♡</span>
             </motion.div>
           )}
         </div>
@@ -320,10 +320,10 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 mb-4">
           <div>
             <h3 className="text-lg sm:text-xl font-serif font-bold text-espresso text-center sm:text-left">
-              Amplop Surat Cinta (Buka Semua Amplop)
+              Amplop Surat Buat Kamu (Buka Semuanya Yaa)
             </h3>
             <p className="text-xs text-taupe text-center sm:text-left">
-              Buka dan baca semua 4 amplop untuk melanjutkan ke tahap berikutnya.
+              Jangan ada yang kelewat yaa, baca semuanya dulu baru bisa lanjut :)
             </p>
           </div>
           <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium ${
@@ -334,7 +334,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
             <BookOpen className="w-3.5 h-3.5 text-dusty-rose" />
             <span>
               Dibuka: <strong>{openedNoteIds.length}</strong> / {totalNotes}{" "}
-              {openedNoteIds.length === totalNotes ? "(Lengkap!)" : "(Harus buka semua)"}
+              {openedNoteIds.length === totalNotes ? "(Lengkap!)" : "(Buka semuanya yaa)"}
             </span>
           </div>
         </div>
@@ -374,7 +374,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                     </div>
                     <div>
                       <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-taupe block">
-                        Surat Untukmu
+                        Catatan Kecil
                       </span>
                       <h4 className="text-sm sm:text-base font-serif font-bold text-espresso leading-snug">
                         {note.title}
@@ -393,13 +393,13 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
 
                 <p className="text-xs text-taupe mt-3 line-clamp-2 italic font-serif">
                   {isLocked
-                    ? "Selesaikan susunan lirik di atas untuk membuka amplop ini."
+                    ? "Susun kalimat di atas dulu yaa buat buka amplop ini :)"
                     : note.subtitle}
                 </p>
 
                 <div className="mt-4 pt-3 border-t border-taupe/10 flex items-center justify-between text-[11px]">
                   <span className="text-dusty-rose font-medium">
-                    {isOpened ? "Baca ulang surat ↗" : "Klik untuk membuka amplop ↗"}
+                    {isOpened ? "Baca lagi ↗" : "Buka amplop ↗"}
                   </span>
                   <Heart className="w-3.5 h-3.5 text-dusty-rose/40" />
                 </div>
@@ -447,7 +447,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-sans font-bold tracking-wider text-dusty-rose block">
-                    Surat Cinta Dari Hatiku
+                    Surat Kecil Buat Kamu
                   </span>
                   <h3 className="text-lg font-serif font-bold text-espresso">
                     {activeReadingNote.title}
@@ -461,7 +461,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               </div>
 
               <div className="mt-5 flex items-center justify-between text-xs text-taupe font-serif italic">
-                <span>Untuk kamu yang selalu berharga ♡</span>
+                <span>Ditulis tulus dari hatiku buat kamu ♡</span>
                 <button
                   type="button"
                   onClick={() => {
@@ -470,7 +470,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                   }}
                   className="px-4 py-2 rounded-full bg-espresso text-warmcard text-xs font-serif font-semibold tracking-wide hover:bg-espresso-light transition-colors"
                 >
-                  Simpan & Tutup
+                  Tutup Surat
                 </button>
               </div>
             </motion.div>
@@ -493,16 +493,16 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
               </div>
 
               <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Semua Surat Telah Dibaca!
+                Semua Amplop Udah Dibuka!
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Krim & Topping Manis Terkumpul! 🍓
+                Krim Manis & Buah Topping Udah Lengkap! 🍓
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
-                Kue ulang tahunmu sekarang sudah terbalut krim vanila lembut dan buah beri manis.
-                Tinggal satu langkah lagi: lilin ulang tahun!
+                Kue ulang tahunmu sekarang makin manis berkat krim dan topping buah!
+                Tinggal satu item terakhir nih: lilin ulang tahun!
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -514,7 +514,7 @@ export default function Phase2SoundtrackNotes({ onComplete }: Phase2SoundtrackNo
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
                 >
-                  <span>Lanjut ke Bintang Harapan</span>
+                  <span>Lanjut Pasang Lilin ↗</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

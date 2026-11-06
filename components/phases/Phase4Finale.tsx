@@ -31,8 +31,8 @@ export default function Phase4Finale() {
         </h2>
         <p className="text-xs sm:text-base text-taupe mt-2 max-w-md mx-auto">
           {isCandleBlown
-            ? "Semua doa baik telah terbang ke langit... Selamat menikmati setiap perayaan indah ini!"
-            : "Make a wish dalam hati, lalu tiup lilin ulang tahunmu!"}
+            ? "Semua doa baikmu semoga terkabul yaa sayang... Selamat ulang tahun sekali lagi! ♡"
+            : "Pejamkan mata bentar, make a wish dalam hati, terus tiup lilinnya yaa sayang!"}
         </p>
       </motion.div>
 
@@ -65,9 +65,9 @@ export default function Phase4Finale() {
 
           {/* Final Warm Footer Note */}
           <footer className="text-center py-8 text-taupe text-xs sm:text-sm font-serif">
-            <p>Dibuat dengan segenap cinta, tawa, dan doa terbaik untukmu ♡</p>
+            <p>Dibuat spesial dengan tulus buat kesayanganku ♡</p>
             <p className="text-[11px] font-sans text-taupe/60 mt-1">
-              "Semua aku dirayakan..." • Selamat menikmati harimu, tersenyumlah selalu!
+              "Semua aku dirayakan..." • Bahagia terus yaa, hari ini harimu!
             </p>
           </footer>
         </div>

@@ -68,7 +68,7 @@ export default function CurtainReveal({ isOpen, children }: CurtainRevealProps) 
           >
             <span className="text-amber-200/80 text-[11px] font-serif tracking-widest uppercase flex items-center gap-1.5 font-bold drop-shadow">
               <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-              Untukmu Yang Paling Berharga
+              Spesial Buat Kesayanganku ♡
               <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
             </span>
           </motion.div>

@@ -123,13 +123,13 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
       <div className="text-center mb-6 sm:mb-8">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-butter/40 border border-butter-light text-espresso text-xs font-serif italic mb-2">
           <Cake className="w-3.5 h-3.5 text-dusty-rose" />
-          Kenangan Manis Kita
+          Kenangan Lucu Kita
         </span>
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-espresso">
-          Temukan Pasangan Kenangan
+          Buka Kenangan Kita Berdua
         </h2>
         <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
-          Buka 2 kartu dengan foto yang sama untuk membuka pondasi dasar kue ulang tahunmu.
+          Coba cocokin dua foto yang sama yaa, sambil bernostalgia momen kita berdua ♡
         </p>
 
         <div className="flex items-center justify-center gap-4 mt-3 text-xs text-taupe font-medium">
@@ -202,7 +202,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                     Kenangan Kita
                   </span>
                   <div className="absolute bottom-2 text-[9px] text-taupe/50 italic font-serif">
-                    Sentuh untuk buka
+                    Klik buat buka
                   </div>
                 </div>
 
@@ -254,16 +254,16 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
               </div>
 
               <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Pondasi Pertama Lengkap!
+                Pondasi Kuenya Udah Dapet!
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Base Kue Ulang Tahun Terkumpul! 🎂
+                Base Kue Ulang Tahunmu Udah Siap! 🎂
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
-                Pondasi kuenya sudah siap! Sekarang saatnya mencari krim manis dan topping
-                lewat alunan musik kita berdua.
+                Base kuenya udah jadi! Sekarang yuk dengerin lagu favorit kita sambil buka amplop
+                surat kecil buat kamu.
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -275,7 +275,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
                 >
-                  <span>Lanjut ke Melodi & Amplop Surat</span>
+                  <span>Lanjut Buka Lagu & Amplop ↗</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

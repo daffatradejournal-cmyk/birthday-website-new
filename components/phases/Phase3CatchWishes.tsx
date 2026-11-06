@@ -142,7 +142,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
           Tangkap Bintang Harapan
         </h2>
         <p className="text-xs sm:text-sm text-taupe mt-1 max-w-md mx-auto">
-          Sentuh bintang atau hati yang melayang pelan untuk mengungkap alasan kenapa aku mencintaimu.
+          Tangkap bintang atau hati yang jatuh yaa, ada alasan kenapa aku sayang banget sama kamu di tiap bintangnya ✨
         </p>
 
         {/* Progress Counter */}
@@ -181,7 +181,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
         <div className="absolute inset-0 bg-gradient-to-b from-alabaster/40 via-oat/30 to-dusty-rose/10 pointer-events-none" />
 
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[11px] font-sans text-taupe/60 italic pointer-events-none">
-          Ketuk bintang atau hati yang jatuh perlahan ✨
+          Klik atau sentuh bintang yang melayang ✨
         </div>
 
         {/* Falling Stars & Hearts */}
@@ -237,16 +237,16 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
               </div>
 
               <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Semua Bahan Kue Telah Lengkap!
+                Bintang Harapan Lengkap!
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Lilin Harapan Terkumpul! 🕯️
+                Yey! Lilin Ulang Tahunnya Siap Dinyalain 🕯️
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
-                Semua bahan kue ulang tahun telah lengkap: Base Kue, Krim Manis, dan Lilin Harapan.
-                Kini saatnya menyalakan lilin dan merayakan ulang tahunmu!
+                Kue ulang tahunmu udah jadi seutuhnya! Sekarang waktunya nyalain lilin dan tiup
+                lilinnya bareng-bareng yaa.
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -261,7 +261,7 @@ export default function Phase3CatchWishes({ onComplete }: Phase3CatchWishesProps
                   }}
                   className="w-full sm:w-auto px-6 py-3 rounded-full bg-espresso hover:bg-espresso-light text-warmcard text-xs sm:text-sm font-serif font-semibold tracking-wide inline-flex items-center justify-center gap-2 shadow-soft hover:shadow-floating transition-all"
                 >
-                  <span>Nyalakan & Rayakan Ulang Tahunmu</span>
+                  <span>Lanjut Tiup Lilin Ulang Tahun ↗</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

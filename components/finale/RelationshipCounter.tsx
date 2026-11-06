@@ -42,11 +42,11 @@ export default function RelationshipCounter() {
       </div>
 
       <h4 className="text-xl sm:text-2xl font-serif font-bold text-espresso">
-        Menghitung Setiap Detik Berharga
+        Udah Sekian Lama Bareng Kamu
       </h4>
 
       <p className="text-xs text-taupe mt-1 max-w-sm mx-auto">
-        Sejak tanggal {birthdayData.relationshipStartDate}, dunia terasa jauh lebih indah dan penuh makna.
+        Dihitung dari hari pertama kita bareng, dan setiap detiknya selalu berarti banget buat aku ♡
       </p>
 
       {/* Grid of 4 Time Units */}

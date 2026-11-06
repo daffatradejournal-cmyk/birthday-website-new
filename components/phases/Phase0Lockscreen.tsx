@@ -89,7 +89,7 @@ export default function Phase0Lockscreen({ onUnlock }: Phase0LockscreenProps) {
           Pintu Rahasia
         </h1>
         <p className="text-xs sm:text-sm text-taupe mt-1 max-w-xs mx-auto">
-          Hanya untuk orang yang paling manis dan selalu ada di pikiranku ♡
+          Khusus buat kesayanganku yang lagi ulang tahun ♡
         </p>
       </motion.div>
 
@@ -126,7 +126,7 @@ export default function Phase0Lockscreen({ onUnlock }: Phase0LockscreenProps) {
             <Lock className="w-5 h-5 text-dusty-rose" />
           )}
           <span className="text-xs font-serif font-semibold tracking-wider uppercase text-taupe">
-            {isSuccess ? "Kode Diterima!" : "Masukkan PIN Spesial"}
+            {isSuccess ? "PIN Bener! Buka pintu..." : "Ketik PIN rahasia kita yaa"}
           </span>
         </div>
 
@@ -186,7 +186,7 @@ export default function Phase0Lockscreen({ onUnlock }: Phase0LockscreenProps) {
               className="text-center my-2 text-xs font-medium text-sage-dark bg-sage/15 py-1.5 px-4 rounded-full inline-flex items-center gap-1.5"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Unlocked! Mengumpulkan bahan kue ulang tahun...</span>
+              <span>Kuncinya kebuka! Yuk kumpulin bahan kue ulang tahunmu...</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -242,7 +242,7 @@ export default function Phase0Lockscreen({ onUnlock }: Phase0LockscreenProps) {
         </div>
 
         <p className="mt-4 text-[11px] text-taupe/70 font-sans">
-          Bisa juga langsung diketik lewat keyboard
+          Bisa diketik langsung di keyboard juga yaa
         </p>
       </motion.div>
     </div>

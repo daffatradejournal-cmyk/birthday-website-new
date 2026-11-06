@@ -23,7 +23,7 @@ export default function EditorialLetter() {
         <div className="flex items-center gap-2">
           <Feather className="w-4 h-4 text-dusty-rose" />
           <span className="text-[11px] font-sans font-bold tracking-widest uppercase text-taupe">
-            A Letter For You • {partnerName}
+            Surat Dari Hatiku • Buat {partnerName}
           </span>
         </div>
         <div className="flex items-center gap-1 text-dusty-rose">
@@ -59,7 +59,7 @@ export default function EditorialLetter() {
       <div className="mt-6 flex justify-center">
         <span className="inline-flex items-center gap-1.5 text-[10px] uppercase font-sans tracking-widest text-taupe/60">
           <span>✦</span>
-          <span>Selamanya Ada di Hatiku</span>
+          <span>Selalu Sayang Kamu, Selamanya ♡</span>
           <span>✦</span>
         </span>
       </div>

@@ -40,7 +40,7 @@ export default function PolaroidScrapbook() {
           Our Little Scrapbook
         </h3>
         <p className="text-xs sm:text-sm text-taupe mt-1">
-          Bisa digeser ke samping atau gunakan tombol panah untuk melihat momen kita.
+          Bisa digeser atau klik tanda panah buat lihat foto-foto kita yaa ♡
         </p>
       </div>
 
