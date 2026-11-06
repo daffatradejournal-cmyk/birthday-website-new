@@ -113,7 +113,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
     localSrc: "/photos/10.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
     caption: "Nongkrong berjam-jam tapi ga kerasa waktu jalan secepet itu.",
-    date: "24 Okt 2023",
+    date: "",
     rotation: "-2.5deg",
   },
   {
@@ -121,7 +121,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
     localSrc: "/photos/11.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
     caption: "Senyum favoritku tiap kali kamu lagi hepi hal-hal kecil.",
-    date: "14 Des 2023",
+    date: "",
     rotation: "2deg",
   },
   {
@@ -129,7 +129,7 @@ const finalePolaroidsList: GalleryPhotoItem[] = [
     localSrc: "/photos/12.jpg",
     fallbackSrc: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
     caption: "Momen jalan sore berdua, ga usah banyak ngomong pun udah nyaman banget.",
-    date: "02 Feb 2024",
+    date: "",
     rotation: "-1.5deg",
   },
 ];

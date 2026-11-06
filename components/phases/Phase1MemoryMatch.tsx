@@ -100,7 +100,7 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
         setFlippedIndices([]);
 
         // Show sweet toast caption
-        setActiveToast({ caption: firstCard.caption });
+        setActiveToast({ caption: `Hebat sayangg! ${firstCard.caption}` });
 
         // Check if all 4 pairs matched
         if (nextMatched.length === memoryPhotosList.length) {
@@ -253,17 +253,16 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
                 <Cake className="w-8 h-8" />
               </div>
 
-              <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold uppercase tracking-wider mb-2">
-                Pondasi Kuenya Udah Dapet!
+              <span className="inline-block px-3 py-1 rounded-full bg-sage/15 text-sage-dark text-xs font-serif font-semibold tracking-wider mb-2">
+                Hebat Sayangg! ♡
               </span>
 
               <h3 className="text-2xl font-serif font-bold text-espresso">
-                Base Kue Ulang Tahunmu Udah Siap! 🎂
+                Hebat Sayangg! Base Kuenya Udah Jadi 🎂
               </h3>
 
               <p className="text-xs sm:text-sm text-taupe mt-2 leading-relaxed">
-                Base kuenya udah jadi! Sekarang yuk dengerin lagu favorit kita sambil buka amplop
-                surat kecil buat kamu.
+                Pinter banget bisa nemuin semua pasangan fotonya! Sekarang yuk lanjut dengerin lagu favorit kita sambil buka amplop surat buat kamu ♡
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">

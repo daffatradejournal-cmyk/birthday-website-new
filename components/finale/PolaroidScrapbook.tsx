@@ -81,7 +81,6 @@ export default function PolaroidScrapbook() {
               fallbackSrc={currentPhoto.fallbackSrc}
               alt={currentPhoto.caption}
               caption={currentPhoto.caption}
-              date={currentPhoto.date}
               rotation={currentPhoto.rotation}
               aspectRatio="square"
               tapeColor="rose"
