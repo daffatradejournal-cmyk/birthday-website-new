@@ -28,6 +28,9 @@ export default function BirthdayApp() {
   const handleUnlockPhase0 = () => {
     setAutoPlayTriggered(true);
     goToPhase(1);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("play-main-bgm"));
+    }
   };
 
   return (

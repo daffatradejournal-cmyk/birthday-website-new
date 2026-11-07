@@ -32,9 +32,16 @@ export default function Phase0Lockscreen({ onUnlock }: Phase0LockscreenProps) {
             // Correct PIN!
             setIsSuccess(true);
             soundEngine.playSuccessChime();
+
+            // IMMEDIATELY trigger BGM playback ("Mesra-mesraannya kecil-kecilan dulu - Sal Priadi")
+            // in the direct user click gesture stack so browser autoplay policy is fully satisfied!
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("play-main-bgm"));
+            }
+
             setTimeout(() => {
               onUnlock();
-            }, 1200);
+            }, 1000);
           } else {
             // Wrong PIN
             setIsError(true);
