@@ -99,8 +99,8 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
         setMatchedPairIds(nextMatched);
         setFlippedIndices([]);
 
-        // Show sweet toast caption
-        setActiveToast({ caption: `Hebat sayangg! ${firstCard.caption}` });
+        // Show sweet toast appreciation
+        setActiveToast({ caption: firstCard.caption });
 
         // Check if all 4 pairs matched
         if (nextMatched.length === memoryPhotosList.length) {
@@ -167,8 +167,8 @@ export default function Phase1MemoryMatch({ onComplete }: Phase1MemoryMatchProps
               exit={{ opacity: 0, y: -5 }}
               className="bg-warmcard/95 border border-dusty-rose/30 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl shadow-soft text-center max-w-md mx-auto"
             >
-              <p className="text-[11px] sm:text-sm font-serif italic text-espresso">
-                "{activeToast.caption}"
+              <p className="text-[11px] sm:text-sm font-serif font-medium text-espresso">
+                {activeToast.caption}
               </p>
             </motion.div>
           )}
