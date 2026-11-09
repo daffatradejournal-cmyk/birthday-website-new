@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PartyPopper, Sparkles, RotateCcw } from "lucide-react";
+import { PartyPopper, Sparkles, RotateCcw, Gamepad2, Camera, Mail } from "lucide-react";
 import { birthdayData } from "@/config/birthdayData";
 import { soundEngine } from "@/lib/soundSynth";
 import InteractiveCake from "@/components/finale/InteractiveCake";
@@ -10,11 +10,16 @@ import CurtainReveal from "@/components/finale/CurtainReveal";
 import PolaroidScrapbook from "@/components/finale/PolaroidScrapbook";
 import EditorialLetter from "@/components/finale/EditorialLetter";
 import RelationshipCounter from "@/components/finale/RelationshipCounter";
+import ArcadeHub from "@/components/games/ArcadeHub";
 
 export default function Phase4Finale() {
   const [isCandleBlown, setIsCandleBlown] = useState(false);
   const [showRevealedContent, setShowRevealedContent] = useState(false);
   const [isCurtainAnimating, setIsCurtainAnimating] = useState(false);
+
+  const photoRef = useRef<HTMLDivElement | null>(null);
+  const letterRef = useRef<HTMLDivElement | null>(null);
+  const arcadeRef = useRef<HTMLDivElement | null>(null);
 
   // When user blows the candle
   const handleCandleBlown = () => {
@@ -90,6 +95,24 @@ export default function Phase4Finale() {
               onCandleBlown={handleCandleBlown}
             />
           </div>
+
+          {/* Quick Option to explore Arcade Mini Games */}
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              onClick={() => {
+                soundEngine.playSparkleSound();
+                setShowRevealedContent(true);
+                setTimeout(() => {
+                  arcadeRef.current?.scrollIntoView({ behavior: "smooth" });
+                }, 150);
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warmcard hover:bg-oat border border-taupe/20 text-xs sm:text-sm font-serif font-semibold text-espresso shadow-soft active:scale-95 transition-all cursor-pointer group"
+            >
+              <Gamepad2 className="w-4 h-4 text-dusty-rose group-hover:scale-110 transition-transform" />
+              <span>Mau seru-seruan main mini games dulu? Buka Arcade 🎮</span>
+            </button>
+          </div>
         </motion.div>
       )}
 
@@ -114,21 +137,54 @@ export default function Phase4Finale() {
             <p className="text-xs sm:text-base text-taupe mt-2 max-w-md mx-auto">
               Semua doa baikmu semoga terkabul yaa sayang... Selamat menikmati kejutan kecil ini!
             </p>
+
+            {/* Quick jump navigation pills */}
+            <div className="flex items-center justify-center gap-2 mt-4 flex-wrap">
+              <button
+                type="button"
+                onClick={() => photoRef.current?.scrollIntoView({ behavior: "smooth" })}
+                className="px-3.5 py-1.5 rounded-full bg-warmcard hover:bg-oat border border-taupe/20 text-xs font-serif text-espresso shadow-xs flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
+              >
+                <Camera className="w-3.5 h-3.5 text-dusty-rose" />
+                <span>Foto Kenangan</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => letterRef.current?.scrollIntoView({ behavior: "smooth" })}
+                className="px-3.5 py-1.5 rounded-full bg-warmcard hover:bg-oat border border-taupe/20 text-xs font-serif text-espresso shadow-xs flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
+              >
+                <Mail className="w-3.5 h-3.5 text-dusty-rose" />
+                <span>Surat Spesial</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => arcadeRef.current?.scrollIntoView({ behavior: "smooth" })}
+                className="px-4 py-1.5 rounded-full bg-dusty-rose hover:bg-dusty-rose-dark text-white text-xs font-serif font-semibold shadow-soft flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
+              >
+                <Gamepad2 className="w-3.5 h-3.5" />
+                <span>Mini Games Seru! 🎮</span>
+              </button>
+            </div>
           </div>
 
           {/* Scrapbook Gallery (Photos) */}
-          <section aria-label="Scrapbook Gallery">
+          <section ref={photoRef} aria-label="Scrapbook Gallery">
             <PolaroidScrapbook />
           </section>
 
           {/* Editorial Birthday Letter (Letter) */}
-          <section aria-label="Editorial Letter">
+          <section ref={letterRef} aria-label="Editorial Letter">
             <EditorialLetter />
           </section>
 
           {/* Live Relationship Counter */}
           <section aria-label="Relationship Day Counter">
             <RelationshipCounter />
+          </section>
+
+          {/* Arcade & Mini Games Seru */}
+          <section ref={arcadeRef} aria-label="Arcade Mini Games">
+            <ArcadeHub />
           </section>
 
           {/* Final Warm Footer Note */}
